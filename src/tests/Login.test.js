@@ -41,17 +41,17 @@ describe('Testa renderização da página Login', () => {
     userEvent.type(passwordInput, validPassword);
     expect(button.disabled).toBeFalsy();
   });
-  // it('Ao clicar no botão, direciona para a página wallet', () => {
-  //   const { history } = renderWithRouterAndRedux(<App />);
-  //   const emailInput = screen.getByTestId(EMAIL_INPUT);
-  //   const passwordInput = screen.getByTestId(PASSWORD_INPUT);
-  //   const button = screen.queryByText('Entrar');
-  //   const validEmail = 'trybe@trybe.com';
-  //   const validPassword = '123abc';
+  it('Ao clicar no botão, direciona para a página /meals', () => {
+    const { history } = renderWithRouterAndRedux(<App />);
+    const emailInput = screen.getByTestId(EMAIL_INPUT);
+    const passwordInput = screen.getByTestId(PASSWORD_INPUT);
+    const button = screen.queryByText('Enter');
+    const validEmail = 'trybe@trybe.com';
+    const validPassword = '123abcd';
 
-  //   userEvent.type(emailInput, validEmail);
-  //   userEvent.type(passwordInput, validPassword);
-  //   userEvent.click(button);
-  //   expect(history.location.pathname).toMatch('/carteira');
-  // });
+    userEvent.type(emailInput, validEmail);
+    userEvent.type(passwordInput, validPassword);
+    userEvent.click(button);
+    expect(history.location.pathname).toMatch('/meals');
+  });
 });
