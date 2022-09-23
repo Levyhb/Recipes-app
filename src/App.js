@@ -15,14 +15,6 @@ import FavoriteRecipes from './pages/FavoriteRecipes';
 function App() {
   return (
     <div className="meals">
-      {/* <span className="logo">TRYBE</span>
-      <object
-        className="rocksGlass"
-        type="image/svg+xml"
-        data={ rockGlass }
-      >
-        Glass
-      </object> */}
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route exact path="/meals" component={ Recipes } />
