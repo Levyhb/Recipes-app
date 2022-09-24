@@ -12,7 +12,7 @@ export default function Header({ title, profileIcon, searchIcon }) {
   return (
     <header className="header">
       <div className="header-contents">
-        <h2 data-testId="page-title">{ title }</h2>
+        <h2 data-testid="page-title">{ title }</h2>
         <div className="header-icons">
           {profileIcon && (
             <Link to="/profile">
