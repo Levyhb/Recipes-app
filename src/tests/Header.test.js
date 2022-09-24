@@ -27,6 +27,5 @@ describe('Testa a renderização da página Header', () => {
 
     userEvent.click(searchIcon);
     expect(searchBar).not.toBeInTheDocument();
-
   });
 });
