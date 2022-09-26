@@ -3,11 +3,11 @@
 // import Recipes from '../pages/Recipes';
 // import mealsMock from './helpers/mealsMock';
 
-// // beforeEach(() => {
-// //   global.fetch = jest.fn(async () => ({
-// //     json: async () => mealsMock,
-// //   }));
-// // });
+// beforeEach(() => {
+//   global.fetch = jest.fn(async () => ({
+//     json: async () => mealsMock,
+//   }));
+// });
 
 // const INITIAL_STATE = {
 //   user: { email: 'BLA '},

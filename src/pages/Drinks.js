@@ -65,7 +65,7 @@ export default function Drinks() {
           ? drinksRecipes.map((drink, index) => (
             <Link
               key={ drink.idDrink }
-              to={ `/meals/${drink.idDrink}` }
+              to={ `/drinks/${drink.idDrink}` }
             >
               <RecipeCard
                 recipeName={ drink.strDrink }
