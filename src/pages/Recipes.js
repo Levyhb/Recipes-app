@@ -10,6 +10,7 @@ const foodsCategorysMaxLength = 5;
 export default function Recipes() {
   const [foodsRecipes, setFoodsRecipes] = useState();
   const [foodsCategorys, setFoodsCategorys] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState('');
 
   useEffect(() => {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -30,9 +31,10 @@ export default function Recipes() {
   const getFoodsByFilter = (event, category) => {
     event.preventDefault();
     let foodsFilterApi = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
-    if (category === 'All') {
+    if (category === 'All' || category === currentFilter) {
       foodsFilterApi = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
     }
+    setCurrentFilter(category);
     fetch(foodsFilterApi)
       .then((response) => response.json())
       .then((data) => setFoodsRecipes(data.meals

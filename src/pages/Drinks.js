@@ -10,6 +10,7 @@ const drinksCategorysMaxLength = 5;
 export default function Drinks() {
   const [drinksRecipes, setDrinksRecipes] = useState();
   const [drinkCategorys, setDrinksCategorys] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState('');
 
   useEffect(() => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
@@ -30,9 +31,10 @@ export default function Drinks() {
   const getDinksByFilter = (event, category) => {
     event.preventDefault();
     let drinksFilterApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
-    if (category === 'All') {
+    if (category === 'All' || category === currentFilter) {
       drinksFilterApi = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     }
+    setCurrentFilter(category);
     fetch(drinksFilterApi)
       .then((response) => response.json())
       .then((data) => setDrinksRecipes(data.drinks
