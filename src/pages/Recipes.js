@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
@@ -22,12 +23,16 @@ export default function Recipes() {
       <main className="recipes-container">
         { foodsRecipes
           ? foodsRecipes.map((meal, index) => (
-            <RecipeCard
+            <Link
+              to={ `/meals/${meal.idMeal}` }
               key={ meal.idMeal }
-              recipeName={ meal.strMeal }
-              recipeImg={ meal.strMealThumb }
-              index={ index }
-            />
+            >
+              <RecipeCard
+                recipeName={ meal.strMeal }
+                recipeImg={ meal.strMealThumb }
+                index={ index }
+              />
+            </Link>
           )) : (
             // Criar componente de Loading
             <p>carregando...</p>
