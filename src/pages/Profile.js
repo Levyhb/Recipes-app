@@ -8,7 +8,7 @@ function Profile() {
   return (
     <>
       <div>
-        <Header title="Profile" profileIcon={ false } searchIcon={ false } />
+        <Header title="Profile" profileIcon searchIcon={ false } />
         <div>
           <p data-testid="profile-email">{ user !== null ? user.email : 'email' }</p>
         </div>
