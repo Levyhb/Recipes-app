@@ -45,10 +45,7 @@ function Recipes({ history, conditionalRecipe }) {
 
   return (
     <div>
-<<<<<<< HEAD
       <Header title="Meals" profileIcon searchIcon history={ history } />
-=======
-      <Header title="Meals" profileIcon searchIcon />
       <nav>
         {
           foodsCategorys
@@ -64,7 +61,6 @@ function Recipes({ history, conditionalRecipe }) {
             ))
         }
       </nav>
->>>>>>> main-group-13
       <main className="recipes-container">
         { conditionalRecipe && foodsRecipes
           ? foodsRecipes.map((meal, index) => (
