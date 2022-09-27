@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchApi from '../helpers/fetchApi';
 import RecipeCard from './RecipeCard';
-import foodsRecipes from '../redux/actions';
+import { foodsRecipes } from '../redux/actions';
 
 const maxRecipeLength = 12;
 
