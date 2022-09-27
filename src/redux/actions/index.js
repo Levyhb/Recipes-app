@@ -1,4 +1,3 @@
-
 export const MEAL_DETAIL = 'MEAL_DETAIL';
 export const DRINK_DETAIL = 'DRINK_DETAIL';
 
@@ -13,4 +12,3 @@ const foodsRecipes = (payload) => ({
 });
 
 export default foodsRecipes;
-
