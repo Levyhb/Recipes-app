@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import '../styles/components/DetailsPage.css';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
@@ -10,6 +11,14 @@ function DrinkDetailsPage() {
     .includes('Measure') && drink[item] !== null);
   const measuresValues = measuresKeys.map((item) => drink[item]);
   // refatorar para 1 função
+
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  useEffect(() => {
+    let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneRecipes === null) doneRecipes = [];
+    setBtnDisabled(doneRecipes
+      .every((e) => e.name !== drink.strDrink));
+  }, []);
 
   return (
     <div>
@@ -33,6 +42,18 @@ function DrinkDetailsPage() {
         }
       </ul>
       <p data-testid="instructions">{drink.strInstructions}</p>
+
+      {
+        btnDisabled && (
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="start-btn"
+          >
+            Start Recipe
+          </button>
+        )
+      }
     </div>
   );
 }
