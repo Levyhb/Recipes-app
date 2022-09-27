@@ -6,7 +6,7 @@ import search from '../images/searchIcon.svg';
 import '../styles/components/Header.css';
 import SearchBar from './SearchBar';
 
-export default function Header({ title, profileIcon, searchIcon }) {
+export default function Header({ title, profileIcon, searchIcon, history }) {
   const [handleSearch, setHandleSearch] = useState(false);
 
   return (
@@ -37,7 +37,7 @@ export default function Header({ title, profileIcon, searchIcon }) {
         </div>
       </div>
       { handleSearch && (
-        <SearchBar />
+        <SearchBar history={ history } />
       )}
     </header>
   );
@@ -47,4 +47,6 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   profileIcon: PropTypes.bool.isRequired,
   searchIcon: PropTypes.bool.isRequired,
+  history: PropTypes.shape({
+  }).isRequired,
 };

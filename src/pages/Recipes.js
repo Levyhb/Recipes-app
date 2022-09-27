@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
@@ -7,7 +9,7 @@ import '../styles/components/RecipeCard.css';
 const foodsRecipesMaxLength = 12;
 const foodsCategorysMaxLength = 5;
 
-export default function Recipes() {
+function Recipes({ history, conditionalRecipe }) {
   const [foodsRecipes, setFoodsRecipes] = useState();
   const [foodsCategorys, setFoodsCategorys] = useState([]);
   const [currentFilter, setCurrentFilter] = useState('');
@@ -43,7 +45,7 @@ export default function Recipes() {
 
   return (
     <div>
-      <Header title="Meals" profileIcon searchIcon />
+      <Header title="Meals" profileIcon searchIcon history={ history } />
       <nav>
         {
           foodsCategorys
@@ -60,7 +62,7 @@ export default function Recipes() {
         }
       </nav>
       <main className="recipes-container">
-        { foodsRecipes
+        { conditionalRecipe && foodsRecipes
           ? foodsRecipes.map((meal, index) => (
             <RecipeCard
               key={ meal.idMeal }
@@ -78,3 +80,15 @@ export default function Recipes() {
     </div>
   );
 }
+
+Recipes.propTypes = {
+  history: PropTypes.shape({
+  }).isRequired,
+  conditionalRecipe: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  conditionalRecipe: state.conditionalRecipe.conditionalRecipes,
+});
+
+export default connect(mapStateToProps)(Recipes);
