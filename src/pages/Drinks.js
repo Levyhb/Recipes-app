@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
@@ -6,7 +7,7 @@ import '../styles/components/RecipeCard.css';
 
 const drinksMaxLength = 12;
 
-export default function Drinks() {
+export default function Drinks({ history }) {
   const [drinksRecipes, setDrinksRecipes] = useState();
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function Drinks() {
 
   return (
     <div>
-      <Header title="Drinks" profileIcon searchIcon />
+      <Header title="Drinks" profileIcon searchIcon history={ history } />
       <main className="recipes-container">
         { drinksRecipes
           ? drinksRecipes.map((drink, index) => (
@@ -37,3 +38,8 @@ export default function Drinks() {
     </div>
   );
 }
+
+Drinks.propTypes = {
+  history: PropTypes.shape({
+  }).isRequired,
+};
