@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -63,12 +64,16 @@ export default function Drinks({ history }) {
       <main className="recipes-container">
         { drinksRecipes
           ? drinksRecipes.map((drink, index) => (
-            <RecipeCard
+            <Link
               key={ drink.idDrink }
-              recipeName={ drink.strDrink }
-              recipeImg={ drink.strDrinkThumb }
-              index={ index }
-            />
+              to={ `/drinks/${drink.idDrink}` }
+            >
+              <RecipeCard
+                recipeName={ drink.strDrink }
+                recipeImg={ drink.strDrinkThumb }
+                index={ index }
+              />
+            </Link>
           )) : (
         // Criar componente de Loading
             <p>carregando...</p>

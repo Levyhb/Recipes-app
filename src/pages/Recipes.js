@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
@@ -64,12 +65,16 @@ function Recipes({ history, conditionalRecipe }) {
       <main className="recipes-container">
         { conditionalRecipe && foodsRecipes
           ? foodsRecipes.map((meal, index) => (
-            <RecipeCard
+            <Link
+              to={ `/meals/${meal.idMeal}` }
               key={ meal.idMeal }
-              recipeName={ meal.strMeal }
-              recipeImg={ meal.strMealThumb }
-              index={ index }
-            />
+            >
+              <RecipeCard
+                recipeName={ meal.strMeal }
+                recipeImg={ meal.strMealThumb }
+                index={ index }
+              />
+            </Link>
           )) : (
             // Criar componente de Loading
             <p>carregando...</p>
