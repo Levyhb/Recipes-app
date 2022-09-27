@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import '../styles/components/DetailsPage.css';
 
 function MealDetailsPage() {
   const meal = useSelector((state) => state.meals.mealDetail);
@@ -13,6 +14,14 @@ function MealDetailsPage() {
   const min = 32;
   const max = 44;
   const embled = meal.strYoutube.slice(min, max);
+
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  useEffect(() => {
+    let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneRecipes === null) doneRecipes = [];
+    setBtnDisabled(doneRecipes
+      .every((e) => e.name !== meal.strMeal));
+  }, []);
 
   return (
     <div>
@@ -47,6 +56,17 @@ function MealDetailsPage() {
         encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />)}
+      {
+        btnDisabled && (
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="start-btn"
+          >
+            Start Recipe
+          </button>
+        )
+      }
     </div>
   );
 }
