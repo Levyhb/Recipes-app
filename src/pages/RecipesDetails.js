@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMealDetail } from '../redux/actions';
 import ArrowCarousel from '../components/ArrowCarousel';
 import CarouselCard from '../components/CarouselCard';
 import '../styles/components/Carrossel.css';
+import MealDetailsPage from '../components/MealDetailsPage';
 
 const maxDrinksLength = 6;
 
 export default function RecipesDetails() {
-  const [mealDetail, setMealDetail] = useState();
+  const dispatch = useDispatch();
   const [recommendedDrinks, setRecommendedDrinks] = useState();
   const carouselDrinksRef = useRef(null);
 
@@ -15,17 +18,19 @@ export default function RecipesDetails() {
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((response) => response.json())
-      .then((data) => setMealDetail(data));
-    console.log(mealDetail);
+      .then((data) => dispatch(getMealDetail(data)));
 
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
       .then((response) => response.json())
       .then((data) => setRecommendedDrinks(data.drinks.slice(0, maxDrinksLength)));
   }, []);
+  const meal = useSelector((state) => state.meals.mealDetail);
 
   return (
     <div>
-      RecipeDetails
+      {
+        meal && <MealDetailsPage />
+      }
       <div className="details-carousel">
         {!recommendedDrinks ? (
           <p>Carregando...</p>
