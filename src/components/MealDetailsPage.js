@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../styles/components/DetailsPage.css';
+import IngredientsList from './IngredientsList';
 
 function MealDetailsPage() {
   const meal = useSelector((state) => state.meals.mealDetail);
   const ingredientsKeys = Object.keys(meal).filter((item) => item
     .includes('Ingredient') && meal[item] !== null);
-  const ingredientsValues = ingredientsKeys.map((item) => meal[item]);
+  const ingredientsValues = ingredientsKeys.map((item) => meal[item])
+    .filter((item) => item !== '');
   const measuresKeys = Object.keys(meal).filter((item) => item
     .includes('Measure') && meal[item] !== null);
   const measuresValues = measuresKeys.map((item) => meal[item]);
@@ -32,18 +34,10 @@ function MealDetailsPage() {
       />
       <h1 data-testid="recipe-title">{meal.strMeal}</h1>
       <h2 data-testid="recipe-category">{meal.strCategory}</h2>
-      <ul>
-        {
-          ingredientsValues.map((item, index) => (
-            <li
-              key={ item }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              { `${measuresValues[index]} ${item}` }
-            </li>
-          ))
-        }
-      </ul>
+      <IngredientsList
+        measuresValues={ measuresValues }
+        ingredientsValues={ ingredientsValues }
+      />
       <p data-testid="instructions">{meal.strInstructions}</p>
       { meal && (<iframe
         data-testid="video"
