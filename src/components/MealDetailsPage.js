@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import '../styles/components/DetailsPage.css';
 import IngredientsList from './IngredientsList';
 
@@ -17,12 +18,21 @@ function MealDetailsPage() {
   const max = 44;
   const embled = meal.strYoutube.slice(min, max);
 
+  const history = useHistory();
+
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [btnText, setBtnText] = useState(false);
   useEffect(() => {
     let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     if (doneRecipes === null) doneRecipes = [];
     setBtnDisabled(doneRecipes
       .every((e) => e.name !== meal.strMeal));
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (inProgressRecipes) {
+      const { meals } = inProgressRecipes;
+      setBtnText(Object.keys(meals)
+        .every((e) => e === meal.idMeal));
+    }
   }, []);
 
   return (
@@ -56,8 +66,9 @@ function MealDetailsPage() {
             type="button"
             data-testid="start-recipe-btn"
             className="start-btn"
+            onClick={ () => history.push(`/meals/${meal.idMeal}/in-progress`) }
           >
-            Start Recipe
+            { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }
           </button>
         )
       }

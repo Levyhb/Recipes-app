@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import '../styles/components/DetailsPage.css';
 import IngredientsList from './IngredientsList';
 
@@ -14,12 +15,21 @@ function DrinkDetailsPage() {
   const measuresValues = measuresKeys.map((item) => drink[item]);
   // refatorar para 1 função
 
+  const history = useHistory();
+
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [btnText, setBtnText] = useState(false);
   useEffect(() => {
     let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     if (doneRecipes === null) doneRecipes = [];
     setBtnDisabled(doneRecipes
       .every((e) => e.name !== drink.strDrink));
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (inProgressRecipes) {
+      const { drinks } = inProgressRecipes;
+      setBtnText(Object.keys(drinks)
+        .every((e) => e === drink.idDrink));
+    }
   }, []);
 
   return (
@@ -43,8 +53,9 @@ function DrinkDetailsPage() {
             type="button"
             data-testid="start-recipe-btn"
             className="start-btn"
+            onClick={ () => history.push(`/drinks/${drink.idDrink}/in-progress`) }
           >
-            Start Recipe
+            { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }
           </button>
         )
       }
