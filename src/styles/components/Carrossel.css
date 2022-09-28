@@ -1,0 +1,55 @@
+.details-carousel {
+  position: relative;
+}
+
+.carousel-container {
+  display: flex;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 1rem;
+  position: relative;
+  scroll-behavior: smooth;
+  width: 90vw;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-card {
+  align-items: center;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0.4rem;
+  max-width: 40vw;
+  min-width: 40vw;
+}
+
+.carousel-card img {
+  width: 100%;
+}
+
+.arrow {
+  background-color: transparent;
+  border: none;
+}
+
+.arrow svg {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+.left {
+  left: 5%;
+  position: absolute;
+  top: 40%;
+}
+
+.right {
+  position: absolute;
+  right: 5%;
+  top: 40%;
+}
