@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import '../styles/components/DetailsPage.css';
 import IngredientsList from './IngredientsList';
+import BtnFavorite from './BtnFavorite';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
@@ -28,12 +29,13 @@ function DrinkDetailsPage() {
     if (inProgressRecipes) {
       const { drinks } = inProgressRecipes;
       setBtnText(Object.keys(drinks)
-        .every((e) => e === drink.idDrink));
+        .some((e) => e === drink.idDrink));
     }
   }, []);
 
   return (
     <div>
+      <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
       <img
         src={ `${drink.strDrinkThumb}` }
         alt="drink"
