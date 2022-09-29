@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import '../styles/components/DetailsPage.css';
+import BtnFavorite from './BtnFavorite';
 
 function MealDetailsPage() {
   const meal = useSelector((state) => state.meals.mealDetail);
@@ -35,6 +36,7 @@ function MealDetailsPage() {
 
   return (
     <div>
+      <BtnFavorite recipe={ meal } type="meal" recipeId={ meal.idMeal } />
       <img
         src={ `${meal.strMealThumb}` }
         alt="meal"
