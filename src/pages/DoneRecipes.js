@@ -5,7 +5,8 @@ import share from '../images/shareIcon.svg';
 export default function DoneRecipes() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneRecipes === null) doneRecipes = [];
     setData(doneRecipes);
   }, []);
   return (
