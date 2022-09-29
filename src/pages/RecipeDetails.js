@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import clipboardCopy from 'clipboard-copy';
 import { getMealDetail } from '../redux/actions';
 import ArrowCarousel from '../components/ArrowCarousel';
 import CarouselCard from '../components/CarouselCard';
 import '../styles/components/Carrossel.css';
 import MealDetailsPage from '../components/MealDetailsPage';
-import shareIcon from '../images/shareIcon.svg';
+import CopyEndpoint from '../components/CopyEndpoint';
+import BtnFavorite from '../components/BtnFavorite';
 
 const maxDrinksLength = 6;
 
@@ -15,8 +15,6 @@ export default function RecipesDetails() {
   const dispatch = useDispatch();
   const [recommendedDrinks, setRecommendedDrinks] = useState();
   const carouselDrinksRef = useRef(null);
-  const [recntCopied, setCopied] = useState(false);
-  const timeInterval = 1000;
 
   const { id } = useParams();
   useEffect(() => {
@@ -30,26 +28,11 @@ export default function RecipesDetails() {
   }, []);
   const meal = useSelector((state) => state.meals.mealDetail);
 
-  const copyEndPoint = (event) => {
-    event.preventDefault();
-    clipboardCopy(`http://localhost:3000/meals/${id}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), timeInterval);
-  };
-
   return (
     <div>
-      <button
-        onClick={ (event) => copyEndPoint(event) }
-        type="button"
-        data-testid="share-btn"
-      >
-        {recntCopied
-          ? 'Link copied!'
-          : <img src={ shareIcon } alt="share-button" />}
-      </button>
+      <CopyEndpoint />
 
-      {/* <BtnFavorite recipe={ meal } type="comidas" recipeId={ id } /> */}
+      <BtnFavorite recipe={ meal } type="comidas" recipeId={ id } />
 
       {
         meal && <MealDetailsPage />

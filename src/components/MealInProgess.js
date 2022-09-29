@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import '../styles/components/Carrossel.css';
 import IngredientsCheckbox from './IngredientsCheckbox';
 import { getMealDetail } from '../redux/actions';
+import BtnFavorite from './BtnFavorite';
+import CopyEndpoint from './CopyEndpoint';
 
 export default function MealInProgess() {
   const { id } = useParams();
@@ -31,6 +33,9 @@ export default function MealInProgess() {
     <div>
       { meal && (
         <>
+          <CopyEndpoint />
+
+          <BtnFavorite recipe={ meal } type="comidas" recipeId={ id } />
           <img
             src={ `${meal.strMealThumb}` }
             alt="meal"

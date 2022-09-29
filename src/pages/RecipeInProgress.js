@@ -6,7 +6,6 @@ import DrinkInProgress from '../components/DrinkInProgress';
 
 export default function RecipeInProgress() {
   const location = useLocation();
-  console.log(location.pathname.includes('meal'))
   return (
     <div>
       {

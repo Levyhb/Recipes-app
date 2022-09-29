@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import '../styles/components/DetailsPage.css';
 import IngredientsList from './IngredientsList';
 import BtnFavorite from './BtnFavorite';
+import CopyEndpoint from './CopyEndpoint';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
@@ -35,6 +36,7 @@ function DrinkDetailsPage() {
 
   return (
     <div>
+      <CopyEndpoint />
       <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
       <img
         src={ `${drink.strDrinkThumb}` }

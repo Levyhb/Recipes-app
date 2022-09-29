@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import '../styles/components/Carrossel.css';
 import IngredientsCheckbox from './IngredientsCheckbox';
 import { getDrinkDetail } from '../redux/actions';
+import BtnFavorite from './BtnFavorite';
 
 export default function DrinkInProgess() {
   const { id } = useParams();
@@ -30,6 +31,7 @@ export default function DrinkInProgess() {
     <div>
       { drink && (
         <>
+          <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
           <img
             src={ `${drink.strDrinkThumb}` }
             alt="drink"
