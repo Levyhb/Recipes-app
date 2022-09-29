@@ -26,7 +26,7 @@ function DrinkDetailsPage() {
     if (inProgressRecipes) {
       const { drinks } = inProgressRecipes;
       setBtnText(Object.keys(drinks)
-        .every((e) => e === drink.idDrink));
+        .some((e) => e === drink.idDrink));
     }
   }, []);
 

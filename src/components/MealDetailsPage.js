@@ -29,7 +29,7 @@ function MealDetailsPage() {
     if (inProgressRecipes) {
       const { meals } = inProgressRecipes;
       setBtnText(Object.keys(meals)
-        .every((e) => e === meal.idMeal));
+        .some((e) => e === meal.idMeal));
     }
   }, []);
 
