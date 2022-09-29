@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../styles/components/DetailsPage.css';
+import BtnFavorite from './BtnFavorite';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
@@ -22,6 +23,7 @@ function DrinkDetailsPage() {
 
   return (
     <div>
+      <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
       <img
         src={ `${drink.strDrinkThumb}` }
         alt="drink"
