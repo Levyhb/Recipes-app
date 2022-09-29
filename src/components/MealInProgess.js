@@ -48,6 +48,12 @@ export default function MealInProgess() {
             ingredientsValues={ ingredientsValues }
           />
           <p data-testid="instructions">{meal.strInstructions}</p>
+          <button
+            data-testid="finish-recipe-btn"
+            type="button"
+          >
+            Finish Recipe
+          </button>
         </>
       )}
     </div>

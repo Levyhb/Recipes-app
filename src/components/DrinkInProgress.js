@@ -5,6 +5,7 @@ import '../styles/components/Carrossel.css';
 import IngredientsCheckbox from './IngredientsCheckbox';
 import { getDrinkDetail } from '../redux/actions';
 import BtnFavorite from './BtnFavorite';
+import CopyEndpoint from './CopyEndpoint';
 
 export default function DrinkInProgess() {
   const { id } = useParams();
@@ -31,6 +32,7 @@ export default function DrinkInProgess() {
     <div>
       { drink && (
         <>
+          <CopyEndpoint />
           <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
           <img
             src={ `${drink.strDrinkThumb}` }
@@ -44,6 +46,12 @@ export default function DrinkInProgess() {
             ingredientsValues={ ingredientsValues }
           />
           <p data-testid="instructions">{drink.strInstructions}</p>
+          <button
+            data-testid="finish-recipe-btn"
+            type="button"
+          >
+            Finish Recipe
+          </button>
         </>
       )}
     </div>
