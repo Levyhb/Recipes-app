@@ -1,8 +1,14 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
+import fetchMock from 'jest-fetch-mock';
 import userEvent from '@testing-library/user-event';
+import mealByIngredients from '../../cypress/mocks/mealsByIngredient';
 import App from '../App';
 import renderWithRouterAndRedux from './helpers/renderWith';
+
+beforeEach(() => {
+  fetchMock.once('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=', mealByIngredients);
+});
 
 describe('Testa a renderização do componente SearchBar', () => {
   it('Verifica o componente Search renderiza corretamente', async () => {
@@ -78,7 +84,7 @@ describe('Testa a renderização do componente SearchBar', () => {
     userEvent.click(searchButtonFilter);
 
     await waitFor(() => {
-      expect(screen.getByText(/RecipeDetails/i)).toBeInTheDocument();
+      expect(screen.getByText(/Start Recipe/i)).toBeInTheDocument();
     });
   });
 });
