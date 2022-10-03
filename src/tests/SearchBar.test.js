@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import mealByIngredients from '../../cypress/mocks/mealsByIngredient';
 import App from '../App';
 import renderWithRouterAndRedux from './helpers/renderWith';
-
+// commit
 beforeEach(() => {
   fetchMock.once('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=', mealByIngredients);
 });

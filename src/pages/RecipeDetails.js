@@ -6,7 +6,6 @@ import ArrowCarousel from '../components/ArrowCarousel';
 import CarouselCard from '../components/CarouselCard';
 import '../styles/components/Carrossel.css';
 import MealDetailsPage from '../components/MealDetailsPage';
-// import CopyEndpoint from '../components/CopyEndpoint';
 
 const maxDrinksLength = 6;
 

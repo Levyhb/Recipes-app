@@ -1,14 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import clipboardCopy from 'clipboard-copy';
 import { getDrinkDetail } from '../redux/actions';
 import '../styles/components/Carrossel.css';
 import CarouselCard from '../components/CarouselCard';
 import ArrowCarousel from '../components/ArrowCarousel';
 import DrinkDetailsPage from '../components/DrinkDetailsPage';
-// import CopyEndpoint from '../components/CopyEndpoint';
-// import shareIcon from '../images/shareIcon.svg';
 
 const mealsMaxLength = 6;
 
@@ -16,8 +13,6 @@ export default function DrinksDetails() {
   const dispatch = useDispatch();
   const [relatedFoods, setRelatedFoods] = useState();
   const carouselMealsRef = useRef(null);
-  // const [recntCopied, setCopied] = useState(false);
-  // const timeInterval = 1000;
 
   const { id } = useParams();
   useEffect(() => {
@@ -30,13 +25,6 @@ export default function DrinksDetails() {
       .then((data) => setRelatedFoods(data.meals.slice(0, mealsMaxLength)));
   }, []);
   const drink = useSelector((state) => state.drinks.drinkDetail);
-
-  // const copyEndPoint = (event) => {
-  //   event.preventDefault();
-  //   clipboardCopy(`http://localhost:3000/drinks/${id}`);
-  //   setCopied(true);
-  //   setTimeout(() => setCopied(false), timeInterval);
-  // };
 
   return (
     <div>
