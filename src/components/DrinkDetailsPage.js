@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import '../styles/components/DetailsPage.css';
+import IngredientsList from './IngredientsList';
 import BtnFavorite from './BtnFavorite';
+import CopyEndpoint from './CopyEndpoint';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
   const ingredientsKeys = Object.keys(drink).filter((item) => item
     .includes('Ingredient') && drink[item] !== null);
-  const ingredientsValues = ingredientsKeys.map((item) => drink[item]);
+  const ingredientsValues = ingredientsKeys.map((item) => drink[item])
+    .filter((item) => item !== '');
   const measuresKeys = Object.keys(drink).filter((item) => item
     .includes('Measure') && drink[item] !== null);
   const measuresValues = measuresKeys.map((item) => drink[item]);
@@ -33,6 +36,7 @@ function DrinkDetailsPage() {
 
   return (
     <div>
+      <CopyEndpoint />
       <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
       <img
         src={ `${drink.strDrinkThumb}` }
@@ -41,18 +45,10 @@ function DrinkDetailsPage() {
       />
       <h1 data-testid="recipe-title">{drink.strDrink}</h1>
       <h2 data-testid="recipe-category">{drink.strAlcoholic}</h2>
-      <ul>
-        {
-          ingredientsValues.map((item, index) => (
-            <li
-              key={ item }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              { `${measuresValues[index]} ${item}` }
-            </li>
-          ))
-        }
-      </ul>
+      <IngredientsList
+        measuresValues={ measuresValues }
+        ingredientsValues={ ingredientsValues }
+      />
       <p data-testid="instructions">{drink.strInstructions}</p>
 
       {
