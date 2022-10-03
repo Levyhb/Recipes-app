@@ -17,8 +17,6 @@ export default function DrinksDetails() {
   const dispatch = useDispatch();
   const [relatedFoods, setRelatedFoods] = useState();
   const carouselMealsRef = useRef(null);
-  // const [recntCopied, setCopied] = useState(false);
-  // const timeInterval = 1000;
 
   const { id } = useParams();
   useEffect(() => {
@@ -32,17 +30,8 @@ export default function DrinksDetails() {
   }, []);
   const drink = useSelector((state) => state.drinks.drinkDetail);
 
-  // const copyEndPoint = (event) => {
-  //   event.preventDefault();
-  //   clipboardCopy(`http://localhost:3000/drinks/${id}`);
-  //   setCopied(true);
-  //   setTimeout(() => setCopied(false), timeInterval);
-  // };
-
   return (
     <div>
-      {/* <CopyEndpoint /> */}
-      {/* <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } /> */}
       {
         drink && <DrinkDetailsPage />
       }

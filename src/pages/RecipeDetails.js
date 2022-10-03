@@ -28,9 +28,6 @@ export default function RecipesDetails() {
 
   return (
     <div>
-      {/* <CopyEndpoint /> */}
-
-      {/* <BtnFavorite recipe={ meal } type="comidas" recipeId={ id } /> */}
 
       {
         meal && <MealDetailsPage />

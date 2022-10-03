@@ -9,20 +9,17 @@ function IngredientsCheckbox({ ingredientsValues, measuresValues }) {
   const { id } = useParams();
   const path = window.location.href.includes('meals') ? 'meals' : 'drinks';
   const dispatch = useDispatch();
-  const storage = localStorage.getItem('inProgressRecipes');
+  const initialStorage = localStorage.getItem('inProgressRecipes');
   const states = {};
   ingredientsValues.forEach((_, index) => { states[index] = false; });
-  if (storage !== null) {
-    const storageValue = JSON.parse(localStorage.getItem('inProgressRecipes'))
+  if (initialStorage !== null) {
+    const storageValue = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const hasKey = Object.keys(storageValue[path]).some((item) => item === id);
-    console.log(hasKey)
     if (hasKey) storageValue[path][id].forEach((item) => { states[item] = true; });
   }
-  console.log(states)
   const [state, setState] = useState(states);
   const [ingredients, setIngredients] = useState([]);
   const [keyLocal, setKeyLocal] = useState();
-  console.log(state)
 
   const handleChecked = ({ target }) => {
     const { name, checked } = target;
@@ -30,7 +27,6 @@ function IngredientsCheckbox({ ingredientsValues, measuresValues }) {
       ...prev,
       [name]: checked,
     }));
-
     const obj = { [target.id]: target.checked };
     dispatch(updateCheckedStates(obj));
     return target.checked;
@@ -43,14 +39,24 @@ function IngredientsCheckbox({ ingredientsValues, measuresValues }) {
 
   useEffect(() => {
     const key = { drinks: {}, meals: {} };
-    // const keyPropertie = window.location.href.includes('meals') ? 'meals' : 'drinks';
-    if (ingredients.length > 0) key[path][id] = ingredients;
-    setKeyLocal(key);
-    dispatch(saveRecipeProgress(key));
+    if (ingredients.length > 0) {
+      key[path][id] = ingredients;
+      setKeyLocal(key);
+      dispatch(saveRecipeProgress(key[path]));
+    }
   }, [ingredients]);
 
   useEffect(() => {
-    localStorage.setItem('inProgressRecipes', JSON.stringify(keyLocal));
+    if (ingredients.length > 0) {
+      let storage = localStorage.getItem('inProgressRecipes');
+      if (!storage) {
+        localStorage.setItem('inProgressRecipes', JSON.stringify(keyLocal));
+      } else {
+        storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+        storage[path] = { ...storage[path], ...keyLocal[path] };
+        localStorage.setItem('inProgressRecipes', JSON.stringify(storage));
+      }
+    }
   }, [keyLocal]);
 
   return (
@@ -67,6 +73,7 @@ function IngredientsCheckbox({ ingredientsValues, measuresValues }) {
               <input
                 type="checkbox"
                 name={ index }
+                checked={ state[index] }
                 onClick={ handleChecked }
               />
               { `${measuresValues[index]} ${item}` }
