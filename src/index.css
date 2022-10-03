@@ -1,6 +1,7 @@
 * {
-  /* --primary-light: ; */
+  --primary-light: #f793818f;
   
+  --secondary-light: #E00F00;
 }
 
 body {
