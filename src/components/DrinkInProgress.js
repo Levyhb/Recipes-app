@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/components/Carrossel.css';
 import IngredientsCheckbox from './IngredientsCheckbox';
@@ -8,6 +8,7 @@ import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
 
 export default function DrinkInProgess() {
+  const [handleFinishButton, setHandleFinishButton] = useState(true);
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,14 +45,18 @@ export default function DrinkInProgess() {
           <IngredientsCheckbox
             measuresValues={ measuresValues }
             ingredientsValues={ ingredientsValues }
+            setHandleFinishButton={ setHandleFinishButton }
           />
           <p data-testid="instructions">{drink.strInstructions}</p>
-          <button
-            data-testid="finish-recipe-btn"
-            type="button"
-          >
-            Finish Recipe
-          </button>
+          <Link to="/done-recipes">
+            <button
+              data-testid="finish-recipe-btn"
+              type="button"
+              disabled={ handleFinishButton }
+            >
+              Finish Recipe
+            </button>
+          </Link>
         </>
       )}
     </div>

@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import '../styles/components/Carrossel.css';
-import IngredientsCheckbox from './IngredientsCheckbox';
 import { getMealDetail } from '../redux/actions';
+import '../styles/components/Carrossel.css';
 import BtnFavorite from './BtnFavorite';
+import IngredientsCheckbox from './IngredientsCheckbox';
 import CopyEndpoint from './CopyEndpoint';
 
 export default function MealInProgess() {
+  const [handleFinishButton, setHandleFinishButton] = useState(true);
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function MealInProgess() {
         <>
           <CopyEndpoint />
 
-          <BtnFavorite recipe={ meal } type="comidas" recipeId={ id } />
+          <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
           <img
             src={ `${meal.strMealThumb}` }
             alt="meal"
@@ -46,14 +47,18 @@ export default function MealInProgess() {
           <IngredientsCheckbox
             measuresValues={ measuresValues }
             ingredientsValues={ ingredientsValues }
+            setHandleFinishButton={ setHandleFinishButton }
           />
           <p data-testid="instructions">{meal.strInstructions}</p>
-          <button
-            data-testid="finish-recipe-btn"
-            type="button"
-          >
-            Finish Recipe
-          </button>
+          <Link to="/done-recipes">
+            <button
+              data-testid="finish-recipe-btn"
+              type="button"
+              disabled={ handleFinishButton }
+            >
+              Finish Recipe
+            </button>
+          </Link>
         </>
       )}
     </div>

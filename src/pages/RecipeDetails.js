@@ -6,8 +6,7 @@ import ArrowCarousel from '../components/ArrowCarousel';
 import CarouselCard from '../components/CarouselCard';
 import '../styles/components/Carrossel.css';
 import MealDetailsPage from '../components/MealDetailsPage';
-import CopyEndpoint from '../components/CopyEndpoint';
-import BtnFavorite from '../components/BtnFavorite';
+// import CopyEndpoint from '../components/CopyEndpoint';
 
 const maxDrinksLength = 6;
 
@@ -30,10 +29,6 @@ export default function RecipesDetails() {
 
   return (
     <div>
-      <CopyEndpoint />
-
-      <BtnFavorite recipe={ meal } type="comidas" recipeId={ id } />
-
       {
         meal && <MealDetailsPage />
       }
