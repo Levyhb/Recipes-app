@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// LOgin
+import '../styles/pages/Login.css';
+import logo from '../styles/images/logo.png';
+
 export default function Login({ history }) {
   const [user, setUser] = useState({ email: '', password: '' });
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
@@ -27,29 +29,40 @@ export default function Login({ history }) {
   };
 
   return (
-    <div>
-      <input
-        data-testid="email-input"
-        type="text"
-        name="email"
-        value={ user.email }
-        onChange={ handleInput }
+    <div className="body-container">
+      <img
+        className="logo"
+        src={ logo }
+        alt="logo"
       />
-      <input
-        data-testid="password-input"
-        type="password"
-        name="password"
-        value={ user.password }
-        onChange={ handleInput }
-      />
-      <button
-        data-testid="login-submit-btn"
-        type="submit"
-        disabled={ isBtnDisabled }
-        onClick={ handleBtn }
-      >
-        Enter
-      </button>
+      <div><h1 className="title">Recipe App</h1></div>
+      <div className="login-container">
+        <input
+          data-testid="email-input"
+          type="text"
+          name="email"
+          placeholder="Name"
+          value={ user.email }
+          onChange={ handleInput }
+        />
+        <input
+          data-testid="password-input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={ user.password }
+          onChange={ handleInput }
+        />
+        <button
+          data-testid="login-submit-btn"
+          className="login-btn"
+          type="submit"
+          disabled={ isBtnDisabled }
+          onClick={ handleBtn }
+        >
+          Enter
+        </button>
+      </div>
     </div>
   );
 }
