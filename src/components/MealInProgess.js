@@ -33,16 +33,19 @@ export default function MealInProgess() {
   return (
     <div>
       { meal && (
-        <>
-          <CopyEndpoint />
-
-          <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
-          <img
-            src={ `${meal.strMealThumb}` }
-            alt="meal"
-            data-testid="recipe-photo"
-          />
-          <h1 data-testid="recipe-title">{meal.strMeal}</h1>
+        <div className="details-container">
+          <div className="img-title">
+            <img
+              src={ `${meal.strMealThumb}` }
+              alt="meal"
+              data-testid="recipe-photo"
+            />
+            <div className="copy-favorite">
+              <CopyEndpoint />
+              <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
+            </div>
+            <h1 data-testid="recipe-title">{meal.strMeal}</h1>
+          </div>
           <h2 data-testid="recipe-category">{meal.strCategory}</h2>
           <IngredientsCheckbox
             measuresValues={ measuresValues }
@@ -59,7 +62,7 @@ export default function MealInProgess() {
               Finish Recipe
             </button>
           </Link>
-        </>
+        </div>
       )}
     </div>
   );

@@ -1,13 +1,41 @@
 .header {
+
+  /* stylelint-disable-next-line no-unknown-animations */
   background-color: var(--secondary-light);
-  padding: 0.5rem 1rem;
+  padding: 1rem 0.5rem;
 }
 
 .header-contents {
+  align-items: center;
   display: flex;
+  font-family: Lobster , cursive;
   justify-content: space-between;
+}
+
+.header-contents h2 {
+  color: var(--terciary-light);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 .header-icons img {
   padding: 0 0.5rem;
 }
+
+.header-contents h2 img {
+  margin-left: 5px;
+  width: 50px;
+}
+
+.icon {
+  background: transparent;
+  border: transparent;
+}
+
+.icon svg {
+  color: var(--terciary-light);
+  height: 40px;
+  width: 40px;
+}
+

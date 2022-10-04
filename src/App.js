@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import DrinksDetails from './pages/DrinksDetails';
+import 'animate.css';
 
 function App() {
   return (

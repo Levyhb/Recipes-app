@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { BiDish } from 'react-icons/bi';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 import '../styles/components/RecipeCard.css';
+import convertFilters from '../helpers/convertMealsFilters';
 
 const foodsRecipesMaxLength = 12;
 const foodsCategorysMaxLength = 5;
@@ -47,17 +49,25 @@ function Recipes({ history, conditionalRecipe }) {
   return (
     <div>
       <Header title="Meals" profileIcon searchIcon history={ history } />
-      <nav>
+      <div className="recipe-title">
+        <BiDish />
+        <h2>Meals</h2>
+      </div>
+      <nav className="nav-filters">
         {
           foodsCategorys
             .map((category) => (
               <button
+                className="buttons-filter"
                 key={ category }
                 type="button"
                 data-testid={ `${category}-category-filter` }
                 onClick={ (e) => getFoodsByFilter(e, category) }
               >
-                {category}
+                <div className="categories">
+                  { convertFilters(category) }
+                  <span>{category}</span>
+                </div>
               </button>
             ))
         }
@@ -77,7 +87,7 @@ function Recipes({ history, conditionalRecipe }) {
             </Link>
           )) : (
             // Criar componente de Loading
-            <p>carregando...</p>
+            <p>Carregando...</p>
           )}
 
       </main>

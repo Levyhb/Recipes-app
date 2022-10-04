@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap') ;
+/* stylelint-disable at-rule-semicolon-space-before */
 
-body {
-  background: url('/src/styles/images/backgroung.png') center center no-repeat;
-  background-size: 360px 640px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-.body-container {
+.login-container {
   align-items: center;
+  background-image: url('../images/backgroung.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,13 +26,13 @@ body {
 .title {
   color: white;
   font-family: Lobster , cursive;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
   text-shadow: 0 5px 5px black;
 }
 
-.login-container {
+.form-container {
   align-items: center;
   display: flex;
   flex-direction: column;

@@ -29,14 +29,14 @@ export default function Login({ history }) {
   };
 
   return (
-    <div className="body-container">
+    <div className="login-container">
       <img
         className="logo"
         src={ logo }
         alt="logo"
       />
       <div><h1 className="title">Recipe App</h1></div>
-      <div className="login-container">
+      <div className="form-container">
         <input
           data-testid="email-input"
           type="text"

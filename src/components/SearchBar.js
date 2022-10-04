@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import fetchApi from '../helpers/fetchApi';
 import RecipeCard from './RecipeCard';
 import { foodsRecipes } from '../redux/actions';
+import '../styles/components/SearchBar.css';
 
 const maxRecipeLength = 12;
 
@@ -46,47 +47,49 @@ function SearchBar({ history: { push, location: { pathname } }, dispatch }) {
     }
   }
   return (
-    <div>
-      <form onSubmit={ onSubmitChange }>
+    <div className="search-bar-container">
+      <form onSubmit={ onSubmitChange } className="form-search-bar">
         <input
           type="text"
           data-testid="search-input"
           value={ search }
           onChange={ handleInput }
         />
-        <label htmlFor="ingredientSearch">
-          Ingredient
-          <input
-            type="radio"
-            data-testid="ingredient-search-radio"
-            id="ingredientSearch"
-            name="search"
-            value="ingredient"
-            onChange={ handleChange }
-          />
-        </label>
-        <label htmlFor="nameSearch">
-          Name
-          <input
-            type="radio"
-            data-testid="name-search-radio"
-            id="nameSearch"
-            name="search"
-            value="name"
-            onChange={ handleChange }
-          />
-        </label>
-        <label htmlFor="firstLetter">
-          First letter
-          <input
-            type="radio"
-            data-testid="first-letter-search-radio"
-            id="firstLetter"
-            name="search"
-            value="firstLetter"
-            onChange={ handleChange }
-          />
-        </label>
+        <div className="search-bar-filters">
+          <label htmlFor="ingredientSearch">
+            Ingredient
+            <input
+              type="radio"
+              data-testid="ingredient-search-radio"
+              id="ingredientSearch"
+              name="search"
+              value="ingredient"
+              onChange={ handleChange }
+            />
+          </label>
+          <label htmlFor="nameSearch">
+            Name
+            <input
+              type="radio"
+              data-testid="name-search-radio"
+              id="nameSearch"
+              name="search"
+              value="name"
+              onChange={ handleChange }
+            />
+          </label>
+          <label htmlFor="firstLetter">
+            First letter
+            <input
+              type="radio"
+              data-testid="first-letter-search-radio"
+              id="firstLetter"
+              name="search"
+              value="firstLetter"
+              onChange={ handleChange }
+            />
+          </label>
+        </div>
         <button
           type="submit"
           data-testid="exec-search-btn"

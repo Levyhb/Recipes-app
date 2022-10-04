@@ -1,0 +1,49 @@
+.img-title {
+  position: relative;
+  width: 100%;
+}
+
+.img-title img {
+  max-width: 100%;
+}
+
+.img-title h1 {
+  color: var(--terciary-light);
+  font-weight: 700;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px 3px black;
+  top: 80%;
+  width: 100%;
+}
+
+.copy-favorite {
+  display: flex;
+  position: absolute;
+  top: 1%;
+}
+
+.preview-recipe {
+  max-width: 100%;
+}
+
+.start-finish-btn {
+  background-color: var(--terciary-light);
+  border: 2px solid var(--secondary-light);
+  bottom: 0;
+  color: var(--secondary-light);
+  font-size: 1.2rem;
+  font-weight: 600;
+  left: 0;
+  padding: 0.5rem;
+  position: fixed;
+  transition: 0.5s;
+  width: 100%;
+  z-index: 19;
+}
+
+.start-finish-btn:hover {
+  background-color: var(--secondary-light);
+  border: 2px solid var(--terciary-light);
+  color: var(--terciary-light);
+}

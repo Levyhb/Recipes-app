@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import '../styles/components/DetailsPage.css';
 import IngredientsList from './IngredientsList';
 import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
+import '../styles/pages/Details.css';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
@@ -35,15 +35,19 @@ function DrinkDetailsPage() {
   }, []);
 
   return (
-    <div>
-      <CopyEndpoint />
-      <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
-      <img
-        src={ `${drink.strDrinkThumb}` }
-        alt="drink"
-        data-testid="recipe-photo"
-      />
-      <h1 data-testid="recipe-title">{drink.strDrink}</h1>
+    <div className="details-container">
+      <div className="img-title">
+        <img
+          src={ `${drink.strDrinkThumb}` }
+          alt="drink"
+          data-testid="recipe-photo"
+        />
+        <h1 data-testid="recipe-title">{drink.strDrink}</h1>
+        <div className="copy-favorite">
+          <CopyEndpoint />
+          <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
+        </div>
+      </div>
       <h2 data-testid="recipe-category">{drink.strAlcoholic}</h2>
       <IngredientsList
         measuresValues={ measuresValues }
@@ -56,7 +60,7 @@ function DrinkDetailsPage() {
           <button
             type="button"
             data-testid="start-recipe-btn"
-            className="start-btn"
+            className="start-finish-btn"
             onClick={ () => history.push(`/drinks/${drink.idDrink}/in-progress`) }
           >
             { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }

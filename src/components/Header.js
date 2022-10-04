@@ -1,36 +1,41 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import profile from '../images/profileIcon.svg';
-import search from '../images/searchIcon.svg';
+import { CgProfile } from 'react-icons/cg';
+import { BiSearchAlt } from 'react-icons/bi';
 import '../styles/components/Header.css';
 import SearchBar from './SearchBar';
+import logo from '../styles/images/logo.png';
 
-export default function Header({ title, profileIcon, searchIcon, history }) {
+export default function Header({ profileIcon, searchIcon, history }) {
   const [handleSearch, setHandleSearch] = useState(false);
 
   return (
     <header className="header">
       <div className="header-contents">
-        <h2 data-testid="page-title">{ title }</h2>
+        <h2 data-testid="page-title">
+          Recipes App
+          <img src={ logo } alt="" />
+        </h2>
         <div className="header-icons">
           {profileIcon && (
-            <Link to="/profile">
-              <img
+            <Link to="/profile" className="icon">
+              {/* <img
                 src={ profile }
                 alt="profile-icon"
                 data-testid="profile-top-btn"
-              />
+              /> */}
+              <CgProfile />
             </Link>
           )}
           {
             searchIcon && (
-              <button type="button" onClick={ () => setHandleSearch(!handleSearch) }>
-                <img
-                  src={ search }
-                  alt="search-button-icon"
-                  data-testid="search-top-btn"
-                />
+              <button
+                className="icon"
+                type="button"
+                onClick={ () => setHandleSearch(!handleSearch) }
+              >
+                <BiSearchAlt />
               </button>
             )
           }
@@ -44,7 +49,6 @@ export default function Header({ title, profileIcon, searchIcon, history }) {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
   profileIcon: PropTypes.bool.isRequired,
   searchIcon: PropTypes.bool.isRequired,
   history: PropTypes.shape({

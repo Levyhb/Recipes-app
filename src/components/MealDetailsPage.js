@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import '../styles/components/DetailsPage.css';
 import IngredientsList from './IngredientsList';
 import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
+import '../styles/pages/Details.css';
 
 function MealDetailsPage() {
   const meal = useSelector((state) => state.meals.mealDetail);
@@ -38,38 +38,45 @@ function MealDetailsPage() {
   }, []);
 
   return (
-    <div>
-      <CopyEndpoint />
-      <BtnFavorite recipe={ meal } type="meal" recipeId={ meal.idMeal } />
-      <img
-        src={ `${meal.strMealThumb}` }
-        alt="meal"
-        data-testid="recipe-photo"
-      />
-      <h1 data-testid="recipe-title">{meal.strMeal}</h1>
+    <div className="details-container">
+      <div className="img-title">
+        <img
+          src={ `${meal.strMealThumb}` }
+          alt="meal"
+          data-testid="recipe-photo"
+        />
+        <h1 data-testid="recipe-title">{meal.strMeal}</h1>
+        <div className="copy-favorite">
+          <CopyEndpoint />
+          <BtnFavorite recipe={ meal } type="meal" recipeId={ meal.idMeal } />
+        </div>
+      </div>
       <h2 data-testid="recipe-category">{meal.strCategory}</h2>
       <IngredientsList
         measuresValues={ measuresValues }
         ingredientsValues={ ingredientsValues }
       />
       <p data-testid="instructions">{meal.strInstructions}</p>
-      { meal && (<iframe
-        data-testid="video"
-        width="560"
-        height="315"
-        src={ `https://www.youtube.com/embed/${embled}` }
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write;
-        encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />)}
+      { meal && (
+        <iframe
+          className="preview-recipe"
+          data-testid="video"
+          width="560"
+          height="315"
+          src={ `https://www.youtube.com/embed/${embled}` }
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write;
+          encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      )}
       {
         btnDisabled && (
           <button
             type="button"
             data-testid="start-recipe-btn"
-            className="start-btn"
+            className="start-finish-btn"
             onClick={ () => history.push(`/meals/${meal.idMeal}/in-progress`) }
           >
             { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }

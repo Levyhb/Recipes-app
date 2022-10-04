@@ -32,15 +32,19 @@ export default function DrinkInProgess() {
   return (
     <div>
       { drink && (
-        <>
-          <CopyEndpoint />
-          <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
-          <img
-            src={ `${drink.strDrinkThumb}` }
-            alt="drink"
-            data-testid="recipe-photo"
-          />
-          <h1 data-testid="recipe-title">{drink.strDrink}</h1>
+        <div className="details-container">
+          <div className="img-title">
+            <img
+              src={ `${drink.strDrinkThumb}` }
+              alt="drink"
+              data-testid="recipe-photo"
+            />
+            <div className="copy-favorite">
+              <CopyEndpoint />
+              <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
+            </div>
+            <h1 data-testid="recipe-title">{drink.strDrink}</h1>
+          </div>
           <h2 data-testid="recipe-category">{drink.strAlcoholic}</h2>
           <IngredientsCheckbox
             measuresValues={ measuresValues }
@@ -57,7 +61,7 @@ export default function DrinkInProgess() {
               Finish Recipe
             </button>
           </Link>
-        </>
+        </div>
       )}
     </div>
   );
