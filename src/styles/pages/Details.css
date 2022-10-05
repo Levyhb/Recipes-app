@@ -17,6 +17,10 @@
   flex-direction: column;
 }
 
+.details-container .list-ingredients label input {
+  margin: 0 5px;
+}
+
 .img-title h1 {
   color: var(--terciary-light);
   font-size: 2.4rem;
