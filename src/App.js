@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-// import rockGlass from './images/rockGlass.svg';
+import lottie from 'lottie-web';
+import { defineLordIconElement } from 'lord-icon-element';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
@@ -13,6 +15,8 @@ import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import DrinksDetails from './pages/DrinksDetails';
 import 'animate.css';
+
+defineLordIconElement(lottie.loadAnimation);
 
 function App() {
   return (

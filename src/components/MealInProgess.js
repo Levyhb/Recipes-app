@@ -33,7 +33,7 @@ export default function MealInProgess() {
   return (
     <div>
       { meal && (
-        <div className="details-container">
+        <div className="details-container details-in-progress">
           <div className="img-title">
             <img
               src={ `${meal.strMealThumb}` }
@@ -46,7 +46,12 @@ export default function MealInProgess() {
             </div>
             <h1 data-testid="recipe-title">{meal.strMeal}</h1>
           </div>
-          <h2 data-testid="recipe-category">{meal.strCategory}</h2>
+          <h2
+            data-testid="recipe-category"
+            className="category-title"
+          >
+            {meal.strCategory}
+          </h2>
           <IngredientsCheckbox
             measuresValues={ measuresValues }
             ingredientsValues={ ingredientsValues }

@@ -86,7 +86,7 @@ function BtnFavorite({ recipe, type, recipeId }) {
       onClick={ (event) => changeFav(event) }
       className="favorite btn-copy-favorite"
     >
-      {isFav ? <MdFavoriteBorder /> : <MdFavorite /> }
+      {isFav ? <MdFavorite /> : <MdFavoriteBorder /> }
     </button>
   );
 }

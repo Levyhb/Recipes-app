@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { CgProfile } from 'react-icons/cg';
-import { BiSearchAlt } from 'react-icons/bi';
 import '../styles/components/Header.css';
 import SearchBar from './SearchBar';
 import logo from '../styles/images/logo.png';
@@ -25,7 +23,13 @@ export default function Header({ profileIcon, searchIcon, history }) {
                 type="button"
                 onClick={ () => setHandleSearch(!handleSearch) }
               >
-                <BiSearchAlt />
+                <lord-icon
+                  src="https://cdn.lordicon.com/msoeawqm.json"
+                  trigger="hover"
+                  colors="primary:#fcdc36,secondary:#fcdc36"
+                  stroke="100"
+                  style={ { width: '50px', height: '50px' } }
+                />
               </button>
             )
           }
@@ -36,7 +40,13 @@ export default function Header({ profileIcon, searchIcon, history }) {
                 alt="profile-icon"
                 data-testid="profile-top-btn"
               /> */}
-              <CgProfile />
+              <lord-icon
+                src="https://cdn.lordicon.com/dxjqoygy.json"
+                trigger="hover"
+                colors="primary:#fcdc36,secondary:#fcdc36"
+                stroke="100"
+                style={ { width: '50px', height: '50px' } }
+              />
             </Link>
           )}
         </div>

@@ -3,6 +3,7 @@
   /* stylelint-disable-next-line no-unknown-animations */
   animation: fadeInDown 1s 0s;
   color: white;
+  padding-top: 1rem;
 }
 
 .form-search-bar {
@@ -12,11 +13,22 @@
   justify-content: space-between;
 }
 
+.form-search-bar .search-input {
+  border: none;
+  border-radius: 10px;
+  padding: 0.2rem;
+}
+
 .form-search-bar .search-bar-filters {
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
   width: 100%;
+}
+
+.form-search-bar .search-bar-filters label {
+  display: flex;
+  gap: 5px;
 }
 
 .form-search-bar button {

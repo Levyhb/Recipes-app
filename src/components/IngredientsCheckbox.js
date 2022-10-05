@@ -70,7 +70,7 @@ function IngredientsCheckbox({ ingredientsValues,
 
   return (
     <div>
-      <ul>
+      <ul className="list-ingredients">
         {
           ingredientsValues.map((item, index) => (
             <label

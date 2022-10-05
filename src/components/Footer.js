@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import drinkIcon from '../images/drinkIcon.svg';
-import { BiDish, BiDrink } from 'react-icons/bi';
 // import mealIcon from '../styles/images/food-icon.png';
 import '../styles/components/Footer.css';
 
@@ -16,10 +15,24 @@ export default function Footer() {
             alt="drink-icon"
             data-testid="drinks-bottom-btn"
           /> */}
-          <BiDrink />
+          <lord-icon
+            src="https://cdn.lordicon.com/szzsfswk.json"
+            trigger="loop"
+            delay="9000"
+            colors="primary:#fcdc36,secondary:#fcdc36"
+            stroke="100"
+            style={ { width: '50px', height: '50px' } }
+          />
         </Link>
         <Link to="/meals" className="icon">
-          <BiDish />
+          <lord-icon
+            src="https://cdn.lordicon.com/jpdtnwas.json"
+            trigger="loop"
+            delay="9000"
+            colors="primary:#fcdc36,secondary:#fcdc36"
+            stroke="100"
+            style={ { width: '50px', height: '50px' } }
+          />
         </Link>
       </div>
     </footer>

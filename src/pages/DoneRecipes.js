@@ -72,7 +72,6 @@ export default function DoneRecipes() {
         //   alcoholicOrNot={ e.alcoholicOrNot }
         //   doneDate={ e.doneDate }
         //   tags={ e.tags }
-
         // />
         <section key={ e.name }>
           <Link to={ `/${e.type}s/${e.id}` }>

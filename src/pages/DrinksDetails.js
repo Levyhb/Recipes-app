@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDrinkDetail } from '../redux/actions';
 import '../styles/components/Carrossel.css';
@@ -35,18 +35,26 @@ export default function DrinksDetails() {
         {!relatedFoods ? (
           <p>Carregando...</p>
         ) : (
-          <div
-            className="carousel-container"
-            ref={ carouselMealsRef }
-          >
-            {relatedFoods.map((food, index) => (
-              <CarouselCard
-                title={ food.strMeal }
-                thumb={ food.strMealThumb }
-                index={ index }
-                key={ food.idMeal }
-              />
-            ))}
+          <div className="related-recipes">
+            <h2>Related Meals</h2>
+            <div
+              className="carousel-container"
+              ref={ carouselMealsRef }
+            >
+              {relatedFoods.map((food, index) => (
+                <Link
+                  to={ `/meals/${food.idMeal}` }
+                  key={ food.idMeal }
+                >
+                  <CarouselCard
+                    title={ food.strMeal }
+                    thumb={ food.strMealThumb }
+                    index={ index }
+                    key={ food.idMeal }
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
         )}
         <ArrowCarousel carousel={ carouselMealsRef } />

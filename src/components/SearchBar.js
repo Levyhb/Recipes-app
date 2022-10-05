@@ -50,6 +50,7 @@ function SearchBar({ history: { push, location: { pathname } }, dispatch }) {
     <div className="search-bar-container">
       <form onSubmit={ onSubmitChange } className="form-search-bar">
         <input
+          className="search-input"
           type="text"
           data-testid="search-input"
           value={ search }

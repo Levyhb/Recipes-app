@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { HiOutlineShare } from 'react-icons/hi';
 import clipboardCopy from 'clipboard-copy';
 
 function CopyEndpoint() {
@@ -24,7 +23,15 @@ function CopyEndpoint() {
     >
       {recntCopied
         ? <p className="link-copied">Link Copied!</p>
-        : <HiOutlineShare />}
+        : (
+          <lord-icon
+            src="https://cdn.lordicon.com/udwhdpod.json"
+            trigger="hover"
+            colors="primary:#750505,secondary:#fcdc36"
+            stroke="100"
+            style={ { width: '55px', height: '55px' } }
+          />
+        )}
     </button>
   );
 }

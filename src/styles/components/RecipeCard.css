@@ -80,7 +80,14 @@
   justify-content: space-between;
   margin: 1rem 0;
   padding-bottom: 1rem;
+  scale: 0.9;
+  transition: 0.5s;
   width: 100%;
+}
+
+.recipe-card:hover {
+  opacity: 0.9;
+  scale: 1;
 }
 
 .recipe-card h2 {

@@ -32,7 +32,7 @@ export default function DrinkInProgess() {
   return (
     <div>
       { drink && (
-        <div className="details-container">
+        <div className="details-container .details-in-progress">
           <div className="img-title">
             <img
               src={ `${drink.strDrinkThumb}` }
