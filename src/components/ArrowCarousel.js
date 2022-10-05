@@ -35,5 +35,5 @@ export default function ArrowCarousel({ carousel }) {
 }
 
 ArrowCarousel.propTypes = {
-  carousel: PropTypes.string.isRequired,
+  carousel: PropTypes.objectOf().isRequired,
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { HiOutlineShare } from 'react-icons/hi';
 import clipboardCopy from 'clipboard-copy';
-import shareIcon from '../images/shareIcon.svg';
 
 function CopyEndpoint() {
   const { id } = useParams();
@@ -20,10 +20,11 @@ function CopyEndpoint() {
       onClick={ (event) => copyEndPoint(event) }
       type="button"
       data-testid="share-btn"
+      className="share"
     >
       {recntCopied
-        ? 'Link copied!'
-        : <img src={ shareIcon } alt="share-button" />}
+        ? <p className="link-copied">Link Copied!</p>
+        : <HiOutlineShare />}
     </button>
   );
 }

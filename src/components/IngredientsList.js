@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function IngredientsList({ ingredientsValues, measuresValues }) {
   return (
-    <div>
+    <div className="ingredient-list">
       <ul>
         {
           ingredientsValues.map((item, index) => (

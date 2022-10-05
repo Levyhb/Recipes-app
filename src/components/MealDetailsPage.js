@@ -51,12 +51,12 @@ function MealDetailsPage() {
           <BtnFavorite recipe={ meal } type="meal" recipeId={ meal.idMeal } />
         </div>
       </div>
-      <h2 data-testid="recipe-category">{meal.strCategory}</h2>
+      <h2 data-testid="recipe-category" className="category-title">{meal.strCategory}</h2>
       <IngredientsList
         measuresValues={ measuresValues }
         ingredientsValues={ ingredientsValues }
       />
-      <p data-testid="instructions">{meal.strInstructions}</p>
+      <p data-testid="instructions" className="instructions">{meal.strInstructions}</p>
       { meal && (
         <iframe
           className="preview-recipe"

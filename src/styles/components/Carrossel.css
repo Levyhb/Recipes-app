@@ -48,11 +48,11 @@
 .left {
   left: 5%;
   position: absolute;
-  top: 40%;
+  top: 50%;
 }
 
 .right {
   position: absolute;
   right: 5%;
-  top: 40%;
+  top: 50%;
 }

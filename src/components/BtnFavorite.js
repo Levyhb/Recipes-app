@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 
 let recipeMockUp = {
   id: '',
@@ -82,18 +81,13 @@ function BtnFavorite({ recipe, type, recipeId }) {
   };
 
   return (
-    <div>
-      <button
-        type="submit"
-        onClick={ (event) => changeFav(event) }
-      >
-        <img
-          src={ isFav ? blackHeartIcon : whiteHeartIcon }
-          data-testid="favorite-btn"
-          alt="favorite-btn"
-        />
-      </button>
-    </div>
+    <button
+      type="submit"
+      onClick={ (event) => changeFav(event) }
+      className="favorite btn-copy-favorite"
+    >
+      {isFav ? <MdFavoriteBorder /> : <MdFavorite /> }
+    </button>
   );
 }
 

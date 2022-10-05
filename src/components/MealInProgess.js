@@ -55,6 +55,7 @@ export default function MealInProgess() {
           <p data-testid="instructions">{meal.strInstructions}</p>
           <Link to="/done-recipes">
             <button
+              className={ handleFinishButton ? 'disabled-button' : 'start-finish-btn' }
               data-testid="finish-recipe-btn"
               type="button"
               disabled={ handleFinishButton }

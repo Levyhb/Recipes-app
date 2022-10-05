@@ -35,15 +35,18 @@ export default function RecipesDetails() {
         {!recommendedDrinks ? (
           <p>Carregando...</p>
         ) : (
-          <div className="carousel-container" ref={ carouselDrinksRef }>
-            {recommendedDrinks.map((drink, index) => (
-              <CarouselCard
-                title={ drink.strDrink }
-                thumb={ drink.strDrinkThumb }
-                index={ index }
-                key={ drink.idDrink }
-              />
-            ))}
+          <div className="related-recipes">
+            <h2>Related Drinks:</h2>
+            <div className="carousel-container" ref={ carouselDrinksRef }>
+              {recommendedDrinks.map((drink, index) => (
+                <CarouselCard
+                  title={ drink.strDrink }
+                  thumb={ drink.strDrinkThumb }
+                  index={ index }
+                  key={ drink.idDrink }
+                />
+              ))}
+            </div>
           </div>
         )}
         <ArrowCarousel carousel={ carouselDrinksRef } />

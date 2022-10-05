@@ -18,16 +18,6 @@ export default function Header({ profileIcon, searchIcon, history }) {
           <img src={ logo } alt="" />
         </h2>
         <div className="header-icons">
-          {profileIcon && (
-            <Link to="/profile" className="icon">
-              {/* <img
-                src={ profile }
-                alt="profile-icon"
-                data-testid="profile-top-btn"
-              /> */}
-              <CgProfile />
-            </Link>
-          )}
           {
             searchIcon && (
               <button
@@ -39,6 +29,16 @@ export default function Header({ profileIcon, searchIcon, history }) {
               </button>
             )
           }
+          {profileIcon && (
+            <Link to="/profile" className="icon">
+              {/* <img
+                src={ profile }
+                alt="profile-icon"
+                data-testid="profile-top-btn"
+              /> */}
+              <CgProfile />
+            </Link>
+          )}
         </div>
       </div>
       { handleSearch && (

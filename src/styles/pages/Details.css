@@ -9,18 +9,61 @@
 
 .img-title h1 {
   color: var(--terciary-light);
+  font-size: 2.4rem;
   font-weight: 700;
   position: absolute;
   text-align: center;
   text-shadow: 1px 1px 3px black;
-  top: 80%;
+  top: 70%;
   width: 100%;
+}
+
+.btn-copy-favorite {
+  background-color: var(--secondary-light);
+  border: 1px solid var(--terciary-light);
+  border-radius: 50%;
+}
+
+.share {
+  background-color: transparent;
+  border: transparent;
+}
+
+.share svg {
+  color: var(--secondary-light);
+  height: 44px;
+  width: 40px;
+}
+
+.favorite svg {
+  color: var(--terciary-light);
+  height: 44px;
+  width: 40px;
 }
 
 .copy-favorite {
   display: flex;
   position: absolute;
   top: 1%;
+}
+
+.link-copied {
+  background-color: var(--secondary-light);
+  border: 1px solid var(--terciary-light);
+  border-radius: 10px;
+  color: var(--terciary-light);
+  margin-top: 0.8rem;
+  padding: 0.2rem;
+}
+
+.category-title {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.instructions {
+  padding: 0.5rem 1rem;
+  text-align: justify;
 }
 
 .preview-recipe {
@@ -47,3 +90,23 @@
   border: 2px solid var(--terciary-light);
   color: var(--terciary-light);
 }
+
+.disabled-button {
+  bottom: 0;
+  color: darkgray;
+  font-size: 1.2rem;
+  font-weight: 600;
+  left: 0;
+  padding: 0.5rem;
+  position: fixed;
+  transition: 0.5s;
+  width: 100%;
+  z-index: 19;
+}
+
+
+.related-recipes {
+  padding-top: 1rem;
+  text-align: center;
+}
+

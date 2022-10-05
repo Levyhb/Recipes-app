@@ -48,12 +48,17 @@ function DrinkDetailsPage() {
           <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
         </div>
       </div>
-      <h2 data-testid="recipe-category">{drink.strAlcoholic}</h2>
+      <h2
+        data-testid="recipe-category"
+        className="category-title"
+      >
+        {drink.strAlcoholic}
+      </h2>
       <IngredientsList
         measuresValues={ measuresValues }
         ingredientsValues={ ingredientsValues }
       />
-      <p data-testid="instructions">{drink.strInstructions}</p>
+      <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
 
       {
         btnDisabled && (
