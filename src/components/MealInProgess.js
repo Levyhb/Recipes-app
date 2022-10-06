@@ -6,6 +6,7 @@ import '../styles/components/Carrossel.css';
 import BtnFavorite from './BtnFavorite';
 import IngredientsCheckbox from './IngredientsCheckbox';
 import CopyEndpoint from './CopyEndpoint';
+import FinishBtn from './FinishBtn';
 
 export default function MealInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
@@ -35,7 +36,7 @@ export default function MealInProgess() {
       { meal && (
         <>
           <CopyEndpoint />
-
+          { console.log(meal)}
           <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
           <img
             src={ `${meal.strMealThumb}` }
@@ -51,13 +52,19 @@ export default function MealInProgess() {
           />
           <p data-testid="instructions">{meal.strInstructions}</p>
           <Link to="/done-recipes">
-            <button
+            {/* <button
               data-testid="finish-recipe-btn"
               type="button"
               disabled={ handleFinishButton }
             >
               Finish Recipe
-            </button>
+            </button> */}
+            <FinishBtn
+              recipe={ meal }
+              type="meal"
+              recipeId={ id }
+              handleFinishButton={ handleFinishButton }
+            />
           </Link>
         </>
       )}

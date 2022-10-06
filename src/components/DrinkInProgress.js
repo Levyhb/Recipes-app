@@ -6,6 +6,7 @@ import IngredientsCheckbox from './IngredientsCheckbox';
 import { getDrinkDetail } from '../redux/actions';
 import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
+import FinishBtn from './FinishBtn';
 
 export default function DrinkInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
@@ -33,6 +34,7 @@ export default function DrinkInProgess() {
     <div>
       { drink && (
         <>
+          {console.log(drink)}
           <CopyEndpoint />
           <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
           <img
@@ -49,13 +51,12 @@ export default function DrinkInProgess() {
           />
           <p data-testid="instructions">{drink.strInstructions}</p>
           <Link to="/done-recipes">
-            <button
-              data-testid="finish-recipe-btn"
-              type="button"
-              disabled={ handleFinishButton }
-            >
-              Finish Recipe
-            </button>
+            <FinishBtn
+              recipe={ drink }
+              type="drink"
+              recipeId={ id }
+              handleFinishButton={ handleFinishButton }
+            />
           </Link>
         </>
       )}

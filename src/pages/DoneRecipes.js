@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import CopyEndpoint from '../components/CopyEndpoint';
 import Header from '../components/Header';
 import share from '../images/shareIcon.svg';
 
@@ -47,17 +48,20 @@ export default function DoneRecipes() {
           >
             {`${e.nationality} - ${e.category}`}
           </h2>
+          {e.alcoholicOrNot && (
+            <p data-testid={ `${index}-horizontal-top-text` }>{e.alcoholicOrNot}</p>
+          )}
           <p
             data-testid={ `${index}-horizontal-done-date` }
           >
             {e.doneDate}
           </p>
-          {e.tags.map((tag) => (
+          {e.tags && e.tags.map((tagElement) => (
             <p
-              key={ tag }
-              data-testid={ `${index}-${tag}-horizontal-tag` }
+              data-testid={ `${index}-${tagElement}-horizontal-tag` }
+              key={ tagElement }
             >
-              {tag}
+              { tagElement }
             </p>
           ))}
           <button
@@ -65,7 +69,7 @@ export default function DoneRecipes() {
             type="button"
             data-testid={ `${index}-horizontal-share-btn` }
           >
-            Compartilhar
+            <CopyEndpoint />
           </button>
         </section>
       ))}
