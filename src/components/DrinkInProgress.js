@@ -6,11 +6,16 @@ import IngredientsCheckbox from './IngredientsCheckbox';
 import { getDrinkDetail } from '../redux/actions';
 import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
+import FinishBtn from './FinishBtn';
 
 export default function DrinkInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const path = window.location.href.includes('meals') ? 'meals' : 'drinks';
+  const url = `http://localhost:3000/${path}/${id}`;
+
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((response) => response.json())
@@ -53,14 +58,13 @@ export default function DrinkInProgess() {
           />
           <p data-testid="instructions">{drink.strInstructions}</p>
           <Link to="/done-recipes">
-            <button
-              className={ handleFinishButton ? 'disabled-button' : 'start-finish-btn' }
-              data-testid="finish-recipe-btn"
-              type="button"
-              disabled={ handleFinishButton }
-            >
-              Finish Recipe
-            </button>
+            <FinishBtn
+              recipe={ drink }
+              type="drink"
+              recipeId={ id }
+              handleFinishButton={ handleFinishButton }
+              url={ url }
+            />
           </Link>
         </div>
       )}

@@ -6,10 +6,14 @@ import '../styles/components/Carrossel.css';
 import BtnFavorite from './BtnFavorite';
 import IngredientsCheckbox from './IngredientsCheckbox';
 import CopyEndpoint from './CopyEndpoint';
+import FinishBtn from './FinishBtn';
 
 export default function MealInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
   const { id } = useParams();
+  const path = window.location.href.includes('meals') ? 'meals' : 'drinks';
+  const url = `http://localhost:3000/${path}/${id}`;
+
   const dispatch = useDispatch();
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -59,14 +63,21 @@ export default function MealInProgess() {
           />
           <p data-testid="instructions">{meal.strInstructions}</p>
           <Link to="/done-recipes">
-            <button
-              className={ handleFinishButton ? 'disabled-button' : 'start-finish-btn' }
+            {/* <button
               data-testid="finish-recipe-btn"
               type="button"
               disabled={ handleFinishButton }
+              className={ handleFinishButton ? 'disabled-button' : 'start-finish-btn' }
             >
               Finish Recipe
-            </button>
+            </button> */}
+            <FinishBtn
+              recipe={ meal }
+              type="meal"
+              recipeId={ id }
+              handleFinishButton={ handleFinishButton }
+              url={ url }
+            />
           </Link>
         </div>
       )}
