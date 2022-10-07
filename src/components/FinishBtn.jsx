@@ -11,9 +11,10 @@ let recipeMockUp = {
   image: '',
   doneDate: '',
   tags: '',
+  url: '',
 };
 
-export default function FinishBtn({ recipe, type, recipeId, handleFinishButton }) {
+export default function FinishBtn({ recipe, type, recipeId, handleFinishButton, url }) {
   const currentlyDate = (new Date()).toLocaleDateString();
   const getDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
@@ -39,6 +40,7 @@ export default function FinishBtn({ recipe, type, recipeId, handleFinishButton }
       image: strMealThumb,
       doneDate: currentlyDate,
       tags: strTags.split(','),
+      url,
     }
     : {
       id: recipeId,
@@ -50,9 +52,11 @@ export default function FinishBtn({ recipe, type, recipeId, handleFinishButton }
       image: strDrinkThumb,
       doneDate: currentlyDate,
       tags: null,
+      url,
     };
 
   const saveDoneRecipe = () => {
+    console.log(url);
     if (getDoneRecipes) {
       localStorage.setItem(
         'doneRecipes',
@@ -61,7 +65,6 @@ export default function FinishBtn({ recipe, type, recipeId, handleFinishButton }
     } else {
       localStorage.setItem('doneRecipes', JSON.stringify([recipeMockUp]));
     }
-    console.log(currentlyDate);
   };
 
   return (
@@ -81,4 +84,5 @@ FinishBtn.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.string).isRequired,
   recipeId: PropTypes.string.isRequired,
   handleFinishButton: PropTypes.bool.isRequired,
+  url: PropTypes.string.isRequired,
 };

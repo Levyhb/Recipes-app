@@ -12,6 +12,10 @@ export default function DrinkInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const path = window.location.href.includes('meals') ? 'meals' : 'drinks';
+  const url = `http://localhost:3000/${path}/${id}`;
+
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((response) => response.json())
@@ -56,6 +60,7 @@ export default function DrinkInProgess() {
               type="drink"
               recipeId={ id }
               handleFinishButton={ handleFinishButton }
+              url={ url }
             />
           </Link>
         </>

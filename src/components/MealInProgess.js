@@ -11,6 +11,9 @@ import FinishBtn from './FinishBtn';
 export default function MealInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
   const { id } = useParams();
+  const path = window.location.href.includes('meals') ? 'meals' : 'drinks';
+  const url = `http://localhost:3000/${path}/${id}`;
+
   const dispatch = useDispatch();
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -36,7 +39,6 @@ export default function MealInProgess() {
       { meal && (
         <>
           <CopyEndpoint />
-          { console.log(meal)}
           <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
           <img
             src={ `${meal.strMealThumb}` }
@@ -64,6 +66,7 @@ export default function MealInProgess() {
               type="meal"
               recipeId={ id }
               handleFinishButton={ handleFinishButton }
+              url={ url }
             />
           </Link>
         </>
