@@ -36,8 +36,17 @@ function DrinkDetailsPage() {
 
   return (
     <div>
-      <CopyEndpoint />
-      <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
+      <CopyEndpoint
+        dataTestCopy="share-btn"
+        pathRecived="drinks"
+        idRecived={ drink.idDrink }
+      />
+      <BtnFavorite
+        recipe={ drink }
+        type="drink"
+        recipeId={ drink.idDrink }
+        dataTest="favorite-btn"
+      />
       <img
         src={ `${drink.strDrinkThumb}` }
         alt="drink"
