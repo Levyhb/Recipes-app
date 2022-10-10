@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
+import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
+// import { renderFavCards } from '../pages/FavoriteRecipes';
 
-function CopyEndpoint() {
-  const { id } = useParams();
-  const path = window.location.href.includes('meals') ? 'meals' : 'drinks';
+function CopyEndpoint({ dataTestCopy, pathRecived, idRecived }) {
   const [recntCopied, setCopied] = useState(false);
   const timeInterval = 1000;
   const copyEndPoint = (event) => {
     event.preventDefault();
-    clipboardCopy(`http://localhost:3000/${path}/${id}`);
+    clipboardCopy(`http://localhost:3000/${pathRecived}/${idRecived}`);
     setCopied(true);
     setTimeout(() => setCopied(false), timeInterval);
   };
@@ -19,13 +18,17 @@ function CopyEndpoint() {
     <button
       onClick={ (event) => copyEndPoint(event) }
       type="button"
-      data-testid="share-btn"
     >
       {recntCopied
         ? 'Link copied!'
-        : <img src={ shareIcon } alt="share-button" />}
+        : <img src={ shareIcon } alt="share-button" data-testid={ dataTestCopy } />}
     </button>
   );
 }
 
+CopyEndpoint.propTypes = {
+  dataTestCopy: PropTypes.string.isRequired,
+  pathRecived: PropTypes.string.isRequired,
+  idRecived: PropTypes.string.isRequired,
+};
 export default CopyEndpoint;
