@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import clipboardCopy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
+
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+import { IoFastFoodSharp } from "react-icons/io5";
+import { IoIosWine } from "react-icons/io";
+import { GiMeal } from "react-icons/gi"
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import '../styles/pages/DoneFavorites.css';
-import { IoFastFoodSharp } from "react-icons/io5";
-import { IoIosWine } from "react-icons/io";
-
-import { GiMeal } from "react-icons/gi"
 
 export default function DoneRecipes() {
   const [data, setData] = useState([]);
@@ -36,6 +39,16 @@ export default function DoneRecipes() {
   const copyEndPoint = (e) => {
     clipboardCopy(e);
     setCopied(true);
+    // toast.success('🦄 Wow so easy!', {
+    //   position: "bottom-right",
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "colored",
+    // });
     setTimeout(() => setCopied(false), timeInterval);
   };
 
@@ -98,9 +111,7 @@ export default function DoneRecipes() {
                   `- ${e.category} ${e.alcoholicOrNot === 'Alcoholic' ? 'Alcoholic' : ''}`
                 }
               </h2>
-              {/* {e.alcoholicOrNot && (
-                <p data-testid={ `${index}-horizontal-top-text` }>{e.alcoholicOrNot}</p>
-              )} */}
+
               <p
                 data-testid={ `${index}-horizontal-done-date` }
               >
@@ -132,6 +143,22 @@ export default function DoneRecipes() {
             </button>
           </section>
         ))}
+        {recntCopied && (
+          // <ToastContainer
+          // position="bottom-right"
+          // autoClose={5000}
+          // hideProgressBar={false}
+          // newestOnTop={false}
+          // closeOnClick
+          // rtl={false}
+          // pauseOnFocusLoss
+          // draggable
+          // pauseOnHover
+          // theme="colored"
+          // />
+          <p>SKDSAK</p>
+        )
+        }
       </div>
     </div>
   );

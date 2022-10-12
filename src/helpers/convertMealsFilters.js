@@ -1,3 +1,4 @@
+import React from 'react';
 import { BiDish } from 'react-icons/bi';
 
 import breakfast from '../styles/images/breakfast.png';

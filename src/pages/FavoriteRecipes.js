@@ -66,7 +66,7 @@ function FavoriteRecipes() {
       const adtionalInfo = r.type === 'meal'
         ? `${r.nationality} - ${r.category}` : r.alcoholicOrNot;
       const endP = r.type === 'meal' ? `/meals/${r.id}` : `/drinks/${r.id}`;
-      // console.log(r);
+
       return (
         <div key={ r.name } className="done-favorites-recipe-page">
           <div className='recipe-card-container'>

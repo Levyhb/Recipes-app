@@ -1,3 +1,4 @@
+import React from 'react';
 import { BiDrink } from 'react-icons/bi';
 
 import beerOthers from '../styles/images/beer-others.png';
