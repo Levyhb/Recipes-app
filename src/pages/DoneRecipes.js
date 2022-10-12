@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import clipboardCopy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
 
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { IoFastFoodSharp } from "react-icons/io5";
 import { IoIosWine } from "react-icons/io";
@@ -15,7 +15,7 @@ import '../styles/pages/DoneFavorites.css';
 export default function DoneRecipes() {
   const [data, setData] = useState([]);
   const [recntCopied, setCopied] = useState(false);
-  const timeInterval = 1000;
+  const timeInterval = 2500;
 
   let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
@@ -39,16 +39,16 @@ export default function DoneRecipes() {
   const copyEndPoint = (e) => {
     clipboardCopy(e);
     setCopied(true);
-    // toast.success('🦄 Wow so easy!', {
-    //   position: "bottom-right",
-    //   autoClose: 5000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: "colored",
-    // });
+    toast.success('Link Copied!', {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     setTimeout(() => setCopied(false), timeInterval);
   };
 
@@ -144,19 +144,18 @@ export default function DoneRecipes() {
           </section>
         ))}
         {recntCopied && (
-          // <ToastContainer
-          // position="bottom-right"
-          // autoClose={5000}
-          // hideProgressBar={false}
-          // newestOnTop={false}
-          // closeOnClick
-          // rtl={false}
-          // pauseOnFocusLoss
-          // draggable
-          // pauseOnHover
-          // theme="colored"
-          // />
-          <p>SKDSAK</p>
+          <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          />
         )
         }
       </div>
