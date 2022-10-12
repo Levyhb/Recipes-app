@@ -44,8 +44,13 @@ function DrinkDetailsPage() {
         />
         <h1 data-testid="recipe-title">{drink.strDrink}</h1>
         <div className="copy-favorite">
-          <CopyEndpoint />
-          <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
+          <CopyEndpoint
+            dataTestCopy="share-btn"
+            pathRecived="drinks"
+            idRecived={ drink.idDrink }
+          />
+          <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink }
+            dataTest="favorite-btn" />
         </div>
       </div>
       <h3

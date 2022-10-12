@@ -12,7 +12,7 @@ let recipeMockUp = {
   image: '',
 };
 
-function BtnFavorite({ recipe, type, recipeId }) {
+function BtnFavorite({ recipe, type, recipeId, dataTest, childToParent }) {
   const {
     strCategory,
     strArea,
@@ -69,6 +69,7 @@ function BtnFavorite({ recipe, type, recipeId }) {
     if (favRecps) {
       const newFavs = favRecps.filter(({ id }) => id !== recipeId);
       localStorage.setItem('favoriteRecipes', JSON.stringify([...newFavs]));
+      childToParent([...newFavs]);
     }
     setAsFav(false);
   };
@@ -92,9 +93,11 @@ function BtnFavorite({ recipe, type, recipeId }) {
 }
 
 BtnFavorite.propTypes = {
+  dataTest: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   recipe: PropTypes.objectOf(PropTypes.string).isRequired,
   recipeId: PropTypes.string.isRequired,
+  childToParent: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default BtnFavorite;

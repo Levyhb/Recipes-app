@@ -3,7 +3,7 @@ import clipboardCopy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
-import '../styles/pages/DoneRecipes.css';
+import '../styles/pages/DoneFavorites.css';
 import { IoFastFoodSharp } from "react-icons/io5";
 import { IoIosWine } from "react-icons/io";
 
@@ -40,7 +40,7 @@ export default function DoneRecipes() {
   };
 
   return (
-    <div className="done-recipes-page">
+    <div className="done-favorites-recipes-page">
       <Header title="Done Recipes" profileIcon />
       <div className='nav-filters'>
         <button
@@ -74,7 +74,7 @@ export default function DoneRecipes() {
 
       <div className='recipe-card-container'>
         {data.map((e, index) => (
-          <section key={ e.id } className="done-recipe-card">
+          <section key={ e.id } className="done-favorites-recipe-card">
             <Link to={ e.type === 'meal' ? `/meals/${e.id}` : `/drinks/${e.id}` }>
               <img
                 src={ e.image }
@@ -127,7 +127,7 @@ export default function DoneRecipes() {
                 trigger="hover"
                 colors="primary:#750505,secondary:#fcdc36"
                 stroke="100"
-                style={ { width: '35px', height: '35px' } }
+                style={ { width: '45px', height: '45px' } }
               />
             </button>
           </section>

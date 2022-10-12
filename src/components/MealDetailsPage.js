@@ -47,8 +47,17 @@ function MealDetailsPage() {
         />
         <h1 data-testid="recipe-title">{meal.strMeal}</h1>
         <div className="copy-favorite">
-          <CopyEndpoint />
-          <BtnFavorite recipe={ meal } type="meal" recipeId={ meal.idMeal } />
+        <CopyEndpoint
+          dataTestCopy="share-btn"
+          pathRecived="meals"
+          idRecived={ meal.idMeal }
+        />
+          <BtnFavorite
+            recipe={ meal }
+            type="meal"
+            recipeId={ meal.idMeal }
+            dataTest="favorite-btn"
+          />
         </div>
       </div>
       <h2 data-testid="recipe-category" className="category-title">{meal.strCategory}</h2>
