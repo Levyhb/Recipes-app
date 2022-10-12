@@ -12,8 +12,10 @@ export default function Header({ profileIcon, searchIcon, history }) {
     <header className="header">
       <div className="header-contents">
         <h2 data-testid="page-title">
-          Recipes App
-          <img src={ logo } alt="" />
+          <Link to="/meals">
+            Recipes App
+            <img src={ logo } alt="" />
+          </Link>
         </h2>
         <div className="header-icons">
           {

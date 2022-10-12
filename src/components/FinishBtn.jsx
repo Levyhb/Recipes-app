@@ -39,7 +39,7 @@ export default function FinishBtn({ recipe, type, recipeId, handleFinishButton, 
       name: strMeal,
       image: strMealThumb,
       doneDate: currentlyDate,
-      tags: strTags.split(','),
+      tags: strTags !== null ? strTags.split(',') : null,
       url,
     }
     : {

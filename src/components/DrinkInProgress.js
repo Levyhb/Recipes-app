@@ -37,7 +37,7 @@ export default function DrinkInProgess() {
   return (
     <div>
       { drink && (
-        <div className="details-container .details-in-progress">
+        <div className="details-container details-in-progress">
           <div className="img-title">
             <img
               src={ `${drink.strDrinkThumb}` }
@@ -50,7 +50,12 @@ export default function DrinkInProgess() {
             </div>
             <h1 data-testid="recipe-title">{drink.strDrink}</h1>
           </div>
-          <h2 data-testid="recipe-category">{drink.strAlcoholic}</h2>
+          <h3
+            data-testid="recipe-category"
+            className="category-title"
+          >
+            {drink.strAlcoholic}
+          </h3>
           <IngredientsCheckbox
             measuresValues={ measuresValues }
             ingredientsValues={ ingredientsValues }

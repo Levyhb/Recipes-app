@@ -48,12 +48,12 @@ function DrinkDetailsPage() {
           <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink } />
         </div>
       </div>
-      <h2
+      <h3
         data-testid="recipe-category"
         className="category-title"
       >
         {drink.strAlcoholic}
-      </h2>
+      </h3>
       <IngredientsList
         measuresValues={ measuresValues }
         ingredientsValues={ ingredientsValues }

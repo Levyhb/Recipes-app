@@ -13,10 +13,14 @@
 }
 
 .header-contents h2 {
-  color: var(--terciary-light);
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 0;
+}
+
+.header-contents h2 a {
+  text-decoration: none;
+  color: var(--terciary-light);
 }
 
 .header-icons img {

@@ -1,0 +1,17 @@
+.checkedInput {
+  text-decoration: line-through;
+}
+
+.ingredient-list {
+  /* background-color: aliceblue; */
+  background-image: url("../images/istockphoto-181149296-170667a-removebg-preview.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 1rem auto;
+  width: 90%;
+  padding: 1rem 0.5rem;
+}
+
+.ingredient-list ul {
+  margin: 1rem 0;
+}

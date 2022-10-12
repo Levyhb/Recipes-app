@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import '../styles/components/IngredientsCheckbox.css';
+import '../styles/components/Ingredients.css';
+import { FaClipboardList } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { updateCheckedStates, saveRecipeProgress } from '../redux/actions';
 
@@ -69,7 +70,12 @@ function IngredientsCheckbox({ ingredientsValues,
   }, [keyLocal]);
 
   return (
-    <div>
+    <div className="ingredient-list">
+      <h2 className="category-title">
+        Ingredients
+        {' '}
+        <FaClipboardList />
+      </h2>
       <ul className="list-ingredients">
         {
           ingredientsValues.map((item, index) => (
