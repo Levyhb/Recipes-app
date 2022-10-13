@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 import '../styles/components/RecipeCard.css';
 import convertFilters from '../helpers/convertDrinkFilters';
+import Loading from '../components/Loading';
 
 const drinksMaxLength = 12;
 const drinksCategorysMaxLength = 5;
@@ -85,8 +86,7 @@ export default function Drinks({ history }) {
               />
             </Link>
           )) : (
-        // Criar componente de Loading
-            <p>Carregando...</p>
+            <Loading />
           )}
       </main>
       <Footer />

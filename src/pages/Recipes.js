@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 import '../styles/components/RecipeCard.css';
 import convertFilters from '../helpers/convertMealsFilters';
+import Loading from '../components/Loading';
 
 const foodsRecipesMaxLength = 12;
 const foodsCategorysMaxLength = 5;
@@ -86,8 +87,7 @@ function Recipes({ history, conditionalRecipe }) {
               />
             </Link>
           )) : (
-            // Criar componente de Loading
-            <p>Carregando...</p>
+            <Loading />
           )}
 
       </main>

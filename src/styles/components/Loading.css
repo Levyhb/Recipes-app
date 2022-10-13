@@ -1,7 +1,21 @@
-/* .loading img {
+.loading {
+    width: 40%;
+    margin: auto;
+    padding: 4rem 0;
+    animation: loading 1s infinite;
+}
 
-} */
+.loading img {
+    width: 100%;
+}
 
-/* @keyframes loading {
-
-} */
+@keyframes loading {
+    0% {
+        opacity: 0.1;
+        /* transform: translate3d(0, -15px, 0); */
+    }
+    100% {
+        opacity: 1;
+        /* transform: translate3d(0, 5px, 0); */
+    }
+}
