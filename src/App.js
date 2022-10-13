@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import lottie from 'lottie-web';
 import { defineLordIconElement } from 'lord-icon-element';
+import 'react-tippy/dist/tippy.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from 'react-router-dom';

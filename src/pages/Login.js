@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/pages/Login.css';
 import logo from '../styles/images/logo.png';
+import { Tooltip } from 'react-tippy';
+
 
 export default function Login({ history }) {
   const [user, setUser] = useState({ email: '', password: '' });
@@ -41,18 +43,24 @@ export default function Login({ history }) {
           data-testid="email-input"
           type="text"
           name="email"
-          placeholder="Name"
+          placeholder="Email"
           value={ user.email }
           onChange={ handleInput }
         />
-        <input
-          data-testid="password-input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={ user.password }
-          onChange={ handleInput }
-        />
+        <Tooltip
+          title="Your password must be longer than 6 characters"
+          position="top"
+          trigger="click"
+        >
+          <input
+            data-testid="password-input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={ user.password }
+            onChange={ handleInput }
+          />
+        </Tooltip>
         <button
           data-testid="login-submit-btn"
           className="login-btn"
