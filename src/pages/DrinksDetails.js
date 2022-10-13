@@ -6,6 +6,7 @@ import '../styles/components/Carrossel.css';
 import CarouselCard from '../components/CarouselCard';
 import ArrowCarousel from '../components/ArrowCarousel';
 import DrinkDetailsPage from '../components/DrinkDetailsPage';
+import Loading from '../components/Loading';
 
 const mealsMaxLength = 6;
 
@@ -33,7 +34,7 @@ export default function DrinksDetails() {
       }
       <div className="details-carousel">
         {!relatedFoods ? (
-          <p>Carregando...</p>
+          <Loading />
         ) : (
           <div className="related-recipes">
             <h2>Related Meals</h2>

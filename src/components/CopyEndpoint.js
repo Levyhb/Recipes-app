@@ -9,7 +9,7 @@ function CopyEndpoint({ dataTestCopy, pathRecived, idRecived }) {
   const timeInterval = 2500;
   const copyEndPoint = (event) => {
     event.preventDefault();
-    clipboardCopy(`http://localhost:3000/${pathRecived}/${idRecived}`);
+    clipboardCopy(window.location.href)
     setCopied(true);
     toast.success('Link Copied!', {
       position: "bottom-right",
