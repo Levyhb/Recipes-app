@@ -46,7 +46,9 @@
   padding: 5px;
 }
 
-
+.buttons-filter .categories img:active, .buttons-filter svg:active {
+  background-color: blue; 
+}
 
 .categories {
   font-size: 12px;
