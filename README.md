@@ -2,7 +2,7 @@
 # Recipes App
 
 
- O projeto Recipes App consiste em uma aplicação em React.js que simula um aplicativo para receitas de comidas e bebidas, com um design feito para mobile. Para buscar as informações de cada receita, foi necessário fazer uma requisição á API de comidas [TheMealDB](https://www.themealdb.com/) e á API de bebidas [CockTailDB](https://www.thecocktaildb.com/api.php).
+ O projeto Recipes App consiste em uma aplicação em React.js que simula um aplicativo para consulta de receitas de comidas e bebidas, com um design feito somente para mobile. Para buscar as informações de cada receita, foi necessário fazer uma requisição á API de comidas [TheMealDB](https://www.themealdb.com/) e á API de bebidas [CockTailDB](https://www.thecocktaildb.com/api.php).
 ## Tecnologias utilizadas
 
 - HTML5
