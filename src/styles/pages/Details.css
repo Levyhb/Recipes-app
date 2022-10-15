@@ -52,6 +52,11 @@
   border: 1px solid var(--terciary-light);
   border-radius: 50%;
   margin-right: 10px;
+  scale: 0.9;
+}
+
+.btn-copy-favorite:hover{
+  scale: 1;
 }
 
 .share svg {
