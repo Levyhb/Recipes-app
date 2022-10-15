@@ -80,18 +80,14 @@ function MealDetailsPage() {
           allowFullScreen
         />
       )}
-      {
-        btnDisabled && (
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-            className="start-finish-btn"
-            onClick={ () => history.push(`/meals/${meal.idMeal}/in-progress`) }
-          >
-            { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }
-          </button>
-        )
-      }
+      <button
+        type="button"
+        data-testid="start-recipe-btn"
+        className="start-finish-btn"
+        onClick={ () => history.push(`/meals/${meal.idMeal}/in-progress`) }
+      >
+        { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }
+      </button>
     </div>
   );
 }

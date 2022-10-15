@@ -65,18 +65,15 @@ function DrinkDetailsPage() {
       />
       <p data-testid="instructions" className="instructions">{drink.strInstructions}</p>
 
-      {
-        btnDisabled && (
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-            className="start-finish-btn"
-            onClick={ () => history.push(`/drinks/${drink.idDrink}/in-progress`) }
-          >
-            { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }
-          </button>
-        )
-      }
+      <button
+        type="button"
+        data-testid="start-recipe-btn"
+        className="start-finish-btn"
+        onClick={ () => history.push(`/drinks/${drink.idDrink}/in-progress`) }
+      >
+        { btnText ? <span>Continue Recipe</span> : <span>Start Recipe</span> }
+      </button>
+
     </div>
   );
 }
