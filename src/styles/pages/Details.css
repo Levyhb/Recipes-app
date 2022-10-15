@@ -41,27 +41,38 @@
   width: 100%;
 }
 
-.btn-copy-favorite {
-  background-color: transparent;
-  border: 1px solid var(--terciary-light);
-  border-radius: 50%;
+.buttons-recipe-details {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
-.share {
-  background-color: transparent;
-  border: transparent;
+.btn-copy-favorite {
+  background-color: var(--terciary-light);
+  border: 1px solid var(--terciary-light);
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .share svg {
   color: var(--secondary-light);
-  height: 44px;
-  width: 40px;
 }
 
 .favorite svg {
   color: var(--secondary-light);
   height: 44px;
   width: 40px;
+}
+
+.home {
+  padding: 0 5px;
+}
+
+.home svg {
+  color: var(--secondary-light);
+  height: 45px;
+  width: 45px;
+  padding: 2px;
 }
 
 .copy-favorite {
@@ -80,7 +91,7 @@
 }
 
 .category-title {
-  padding-top: 1rem;
+  padding-top: 2rem;
   display: flex;
   justify-content: center;
   gap: 5px;

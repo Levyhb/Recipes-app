@@ -10,7 +10,7 @@ import { IoIosWine } from 'react-icons/io';
 
 function FavoriteRecipes() {
   const [favRecipes, setFavs] = useState([]);
-  // const [data, setData] = useState('');
+
   const childToParent = (childdata) => {
     setFavs([...childdata]);
     console.log(childdata);
@@ -102,7 +102,6 @@ function FavoriteRecipes() {
               </div>
             </div>
           </div>
-          <hr />
         </div>
       );
     })

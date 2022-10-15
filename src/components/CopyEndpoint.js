@@ -30,15 +30,15 @@ function CopyEndpoint({ dataTestCopy, pathRecived, idRecived }) {
         onClick={ (event) => copyEndPoint(event) }
         type="button"
         data-testid="share-btn"
-        className="share"
+        className="share btn-copy-favorite"
       >
           <lord-icon
             className="lord-icon"
             src="https://cdn.lordicon.com/udwhdpod.json"
             trigger="click"
-            colors="primary:#750505,secondary:#fcdc36"
+            colors="primary:#750505,secondary:#750505"
             stroke="100"
-            style={ { width: '55px', height: '55px' } }
+            style={ { width: '50px', height: '50px' } }
           />
       </button>
       {recntCopied && (

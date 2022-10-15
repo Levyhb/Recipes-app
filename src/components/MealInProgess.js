@@ -7,6 +7,7 @@ import BtnFavorite from './BtnFavorite';
 import IngredientsCheckbox from './IngredientsCheckbox';
 import CopyEndpoint from './CopyEndpoint';
 import FinishBtn from './FinishBtn';
+import BackButton from './BackButton';
 
 export default function MealInProgess() {
   const [handleFinishButton, setHandleFinishButton] = useState(true);
@@ -44,9 +45,12 @@ export default function MealInProgess() {
               alt="meal"
               data-testid="recipe-photo"
             />
-            <div className="copy-favorite">
-              <CopyEndpoint />
-              <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
+            <div className='buttons-recipe-details'>
+              <div className="copy-favorite">
+                <CopyEndpoint />
+                <BtnFavorite recipe={ meal } type="meal" recipeId={ id } />
+                <BackButton />
+              </div>
             </div>
             <h1 data-testid="recipe-title">{meal.strMeal}</h1>
           </div>

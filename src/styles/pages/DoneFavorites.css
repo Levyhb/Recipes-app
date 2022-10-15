@@ -75,4 +75,12 @@
 
 .favorites-recipe-card-btn .btn-copy-favorite {
     border: none;
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+.done-favorites-recipe-card .share {
+    border: none;
+    background-color: transparent;
+    margin-top: 10px;
 }

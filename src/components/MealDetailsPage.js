@@ -5,6 +5,8 @@ import IngredientsList from './IngredientsList';
 import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
 import '../styles/pages/Details.css';
+import { RiArrowGoBackFill } from 'react-icons/ri';
+import BackButton from './BackButton';
 
 function MealDetailsPage() {
   const meal = useSelector((state) => state.meals.mealDetail);
@@ -15,7 +17,7 @@ function MealDetailsPage() {
   const measuresKeys = Object.keys(meal).filter((item) => item
     .includes('Measure') && meal[item] !== null);
   const measuresValues = measuresKeys.map((item) => meal[item]);
-  // refatorar para 1 função
+
   const min = 32;
   const max = 44;
   const embled = meal.strYoutube.slice(min, max);
@@ -46,18 +48,21 @@ function MealDetailsPage() {
           data-testid="recipe-photo"
         />
         <h1 data-testid="recipe-title">{meal.strMeal}</h1>
-        <div className="copy-favorite">
-        <CopyEndpoint
-          dataTestCopy="share-btn"
-          pathRecived="meals"
-          idRecived={ meal.idMeal }
-        />
-          <BtnFavorite
-            recipe={ meal }
-            type="meal"
-            recipeId={ meal.idMeal }
-            dataTest="favorite-btn"
-          />
+        <div className='buttons-recipe-details'>
+          <div className="copy-favorite">
+            <CopyEndpoint
+              dataTestCopy="share-btn"
+              pathRecived="meals"
+              idRecived={ meal.idMeal }
+            />
+            <BtnFavorite
+              recipe={ meal }
+              type="meal"
+              recipeId={ meal.idMeal }
+              dataTest="favorite-btn"
+            />
+            <BackButton />
+          </div>
         </div>
       </div>
       <h2 data-testid="recipe-category" className="category-title">{meal.strCategory}</h2>

@@ -37,11 +37,6 @@ export default function Header({ profileIcon, searchIcon, history }) {
           }
           {profileIcon && (
             <Link to="/profile" className="icon">
-              {/* <img
-                src={ profile }
-                alt="profile-icon"
-                data-testid="profile-top-btn"
-              /> */}
               <lord-icon
                 src="https://cdn.lordicon.com/dxjqoygy.json"
                 trigger="hover"

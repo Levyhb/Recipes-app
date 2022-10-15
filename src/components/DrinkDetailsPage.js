@@ -5,6 +5,7 @@ import IngredientsList from './IngredientsList';
 import BtnFavorite from './BtnFavorite';
 import CopyEndpoint from './CopyEndpoint';
 import '../styles/pages/Details.css';
+import BackButton from './BackButton';
 
 function DrinkDetailsPage() {
   const drink = useSelector((state) => state.drinks.drinkDetail);
@@ -15,7 +16,6 @@ function DrinkDetailsPage() {
   const measuresKeys = Object.keys(drink).filter((item) => item
     .includes('Measure') && drink[item] !== null);
   const measuresValues = measuresKeys.map((item) => drink[item]);
-  // refatorar para 1 função
 
   const history = useHistory();
 
@@ -43,14 +43,17 @@ function DrinkDetailsPage() {
           data-testid="recipe-photo"
         />
         <h1 data-testid="recipe-title">{drink.strDrink}</h1>
-        <div className="copy-favorite">
-          <CopyEndpoint
-            dataTestCopy="share-btn"
-            pathRecived="drinks"
-            idRecived={ drink.idDrink }
-          />
-          <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink }
-            dataTest="favorite-btn" />
+        <div className='buttons-recipe-details'>
+          <div className="copy-favorite">
+            <CopyEndpoint
+              dataTestCopy="share-btn"
+              pathRecived="drinks"
+              idRecived={ drink.idDrink }
+            />
+            <BtnFavorite recipe={ drink } type="drink" recipeId={ drink.idDrink }
+              dataTest="favorite-btn" />
+            <BackButton />
+          </div>
         </div>
       </div>
       <h3
